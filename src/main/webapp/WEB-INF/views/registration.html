@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Create an account</title>
+
+    <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/resources/css/common.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div>
+    <form method="POST" th:object="${userForm}" th:action="@{/registration}">
+        <h2>Create your account</h2>
+
+        <div>
+            <input type="text" th:field="*{username}" placeholder="Username" autofocus="true"/>
+            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error with data entered</span>
+        </div>
+
+        <div>
+            <input type="password" th:field="*{password}" placeholder="Password"/>
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error with data entered</span>
+        </div>
+
+        <div>
+            <input type="password" th:field="*{confirmPassword}" placeholder="Confirm password"/>
+            <span th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Error with data entered</span>
+        </div>
+
+        <button type="submit" value="Submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
