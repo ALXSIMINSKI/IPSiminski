@@ -10,14 +10,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -72,12 +71,16 @@ public class SecurityController {
     @PostMapping("/login")
     public String login(@ModelAttribute User userForm, HttpServletRequest request, Model model) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userForm.getUsername(), userForm.getPassword());
-        Authentication authentication = null;
+        Authentication authentication;
         try {
             authentication = authenticationManager.authenticate(authenticationToken);
         } catch (BadCredentialsException bcException) {
             model.addAttribute("userForm", new User());
-            model.addAttribute("failed", true);
+            model.addAttribute("badCredentials", true);
+            return "login";
+        } catch (AuthenticationException authException) {
+            model.addAttribute("userForm", new User());
+            model.addAttribute("loginFailed", true);
             return "login";
         }
         SecurityContext securityContext = SecurityContextHolder.getContext();
