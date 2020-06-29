@@ -37,9 +37,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                //Настройка для входа в систему
-                .formLogin().loginPage("/login").defaultSuccessUrl("/welcome", true)
-                .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/login").permitAll();
     }
 

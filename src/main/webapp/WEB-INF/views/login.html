@@ -15,9 +15,14 @@
 <body>
 
 <div>
-    <form method="POST" th:action="@{/login}">
-        <input name="username" type="text" placeholder="Username" autofocus="true"/>
-        <input name="password" type="password" placeholder="Password"/>
+    <form method="POST" th:object="${userForm}" th:action="@{/login}">
+        <div>
+            <input name="username" th:field="*{username}" type="text" placeholder="Username" autofocus="true"/>
+            <span th:if="${failed}" th:text="#{Login.failed.bad.credentials}">Login failed</span>
+        </div>
+        <div>
+            <input name="password" th:field="*{password}" type="password" placeholder="Password"/>
+        </div>
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 

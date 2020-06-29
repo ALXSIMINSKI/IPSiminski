@@ -5,15 +5,33 @@ import by.siminski.services.security.SecurityService;
 import by.siminski.services.user.UserService;
 import by.siminski.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import static org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
+
 @Controller
 public class SecurityController {
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @Autowired
     private UserService userService;
@@ -23,6 +41,10 @@ public class SecurityController {
 
     @Autowired
     private UserValidator userValidator;
+
+    @Qualifier("userDetailsServiceImpl")
+    @Autowired
+    UserDetailsService userDetailsService;
 
     @GetMapping("/registration")
     public String registration(Model model) {
@@ -42,8 +64,27 @@ public class SecurityController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        model.addAttribute("userForm", new User());
         return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@ModelAttribute User userForm, HttpServletRequest request, Model model) {
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userForm.getUsername(), userForm.getPassword());
+        Authentication authentication = null;
+        try {
+            authentication = authenticationManager.authenticate(authenticationToken);
+        } catch (BadCredentialsException bcException) {
+            model.addAttribute("userForm", new User());
+            model.addAttribute("failed", true);
+            return "login";
+        }
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        securityContext.setAuthentication(authentication);
+        HttpSession session = request.getSession(true);
+        session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, securityContext);
+        return "redirect:/welcome";
     }
 
     @GetMapping({"/", "/welcome"})
