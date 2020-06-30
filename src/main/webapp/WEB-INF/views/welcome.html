@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -12,13 +13,13 @@
     <script th:src="@{/resources/js/bootstrap.min.js}"></script>
 </head>
 <body>
-
+<div th:insert="~{fragments::navbar}">Navbar</div>
 <div>
     <form id="logoutForm" method="POST" th:action="@{/logout}">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
     <h2> [[#{Welcome.user}]], [[${userName}]] | <a href="/logout">Logout</a></h2>
 </div>
-
+<div th:insert="~{fragments::footer}">Footer</div>
 </body>
 </html>

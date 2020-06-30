@@ -13,7 +13,7 @@
     <script th:src="@{/resources/js/bootstrap.min.js}"></script>
 </head>
 <body>
-
+<div th:insert="~{fragments::navbar}">Navbar</div>
 <div>
     <form method="POST" th:object="${userForm}" th:action="@{/login}">
         <div>
@@ -31,6 +31,6 @@
         <h4><a th:href="@{/registration}">Create an account</a></h4>
     </form>
 </div>
-
+<div th:insert="~{fragments::footer}">Footer</div>
 </body>
 </html>

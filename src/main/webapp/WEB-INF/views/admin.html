@@ -12,6 +12,7 @@
     <script th:src="@{/resources/js/bootstrap.min.js}"></script>
 </head>
 <body>
+<div th:insert="~{fragments::navbar}">Navbar</div>
 <div>
     <form id="logoutForm" th:action="@{/logout}" method="POST">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -20,6 +21,6 @@
         [[#{Welcome.admin}]], [[${userName}]] | <a href="/logout">Logout</a>
     </h2>
 </div>
-
+<div th:insert="~{fragments::footer}">Footer</div>
 </body>
 </html>
