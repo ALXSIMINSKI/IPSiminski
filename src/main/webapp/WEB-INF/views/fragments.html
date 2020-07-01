@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<body>
-<div th:fragment="navbar"></div>
-<div th:fragment="footer"></div>
-</body>
+    <body>
+        <!--NAVBAR-->
+        <nav th:fragment="navbar" class="navbar">
+            <a class="navbar-brand" href="#">IP SIMINSKI</a>
+            <a class="navbar-link-custom" href="#">Offerings</a>
+            <a class="navbar-link-custom" href="#">Make order</a>
+            <a class="navbar-link-custom" href="#">Photos</a>
+            <a class="navbar-link-custom" href="#">About</a>
+        </nav>
+        <!--FOOTER-->
+        <footer th:fragment="footer">
+            <span><i>IP SIMINSKI &copy; 2020</i></span>
+        </footer>
+    </body>
 </html>
