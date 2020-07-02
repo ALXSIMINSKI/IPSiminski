@@ -11,32 +11,33 @@ body{
     color: #5e5b64;
 }
 
-#main{
+#main {
     position:relative;
     z-index:1;
     background-color: #fff;
     padding: 0 0 900px;
-    box-shadow: 0 5px 3px rgba(0,0,0,0.25);
+    box-shadow: 0 10px 5px rgba(0,0,0,0.25);
 }
 
-footer{
-    position:relative;
+footer {
+    position: relative;
     z-index:-2;
-
-    height: 200px;
+    height: 150px;
     color:#ccc;
     font-size:12px;
     background-color: #212529;
+    background-image:-webkit-linear-gradient(top, #31353a, #2f3337);
+    background-image:-moz-linear-gradient(top, #31353a, #2f3337);
+    background-image:linear-gradient(top, #31353a, #2f3337);
 }
 
-footer > span{
-    position: absolute;
+footer > span {
     font-size: x-large;
-    top: 50%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position:fixed;
+    bottom: 70px;
     left: 70%;
-    font-family: Bookman, URW Bookman L, TeX Gyre Schola, sans-serif;
     z-index:-1;
-    color: #ffffff;
 }
 
 .navbar {
@@ -50,11 +51,36 @@ footer > span{
     background-color: #4cae4c;
 }
 
+.navbar-brand {
+    border-radius: 5px;
+}
+
 .navbar-brand:hover {
-    background-color: #4cae4c;
+    background-color: #aeae47;
+}
+
+.btn-download {
+    background-color: transparent;
+    border-color: #4cae4c;
+    color: #4cae4c;
+    padding-left: auto;
+    margin-left: auto;
+    left: auto;
+}
+
+.btn-download:hover {
+    color: #aeae47;
+    box-shadow: 0 0 5px #4cae4c;
+}
+
+.navbar-form {
+    display: inline-block;
+    position: absolute;
+    right: 0;
 }
 
 .navbar-link-custom {
+    border-radius: 5px;
     height: 50px;
     padding: 10px 50px;
     font-size: 15px;

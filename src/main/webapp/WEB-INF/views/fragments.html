@@ -3,15 +3,17 @@
     <body>
         <!--NAVBAR-->
         <nav th:fragment="navbar" class="navbar">
-            <a class="navbar-brand" href="#">IP SIMINSKI</a>
-            <a class="navbar-link-custom" href="#">Offerings</a>
-            <a class="navbar-link-custom" href="#">Make order</a>
-            <a class="navbar-link-custom" href="#">Photos</a>
-            <a class="navbar-link-custom" href="#">About</a>
+            <a class="navbar-brand" th:href="@{/welcome}">[[#{Gena.surname}]]</a>
+            <a class="navbar-link-custom" th:href="@{/offerings}">[[#{Navigation.offerings}]]</a>
+            <a class="navbar-link-custom" th:href="@{/order}">[[#{Navigation.make.online.order}]]</a>
+            <a class="navbar-link-custom" th:href="@{/contacts}">[[#{Navigation.contacts}]]</a>
+            <form class="navbar-form" th:action="@{/download/pl}" method="POST">
+                <button class="btn btn-download" type="submit">[[#{Download.pricelist}]]</button>
+            </form>
         </nav>
         <!--FOOTER-->
-        <footer th:fragment="footer">
-            <span><i>IP SIMINSKI &copy; 2020</i></span>
+        <footer>
+            <span>[[#{Gena.vocation}]] &copy; 2020</span>
         </footer>
     </body>
 </html>
