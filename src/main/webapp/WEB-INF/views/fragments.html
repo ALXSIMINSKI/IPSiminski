@@ -2,17 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <body>
         <!--NAVBAR-->
-        <nav th:fragment="navbar" class="navbar">
-            <a class="navbar-brand" th:href="@{/welcome}">[[#{Gena.surname}]]</a>
+        <nav th:fragment="navbar(userName)" class="navbar">
+            <a class="navbar-link-custom" th:href="@{/welcome}">[[#{Gena.surname}]]</a>
             <a class="navbar-link-custom" th:href="@{/offerings}">[[#{Navigation.offerings}]]</a>
             <a class="navbar-link-custom" th:href="@{/order}">[[#{Navigation.make.online.order}]]</a>
             <a class="navbar-link-custom" th:href="@{/contacts}">[[#{Navigation.contacts}]]</a>
             <form class="navbar-form" th:action="@{/download/pl}" method="POST">
                 <button class="btn btn-download" type="submit">[[#{Download.pricelist}]]</button>
             </form>
+            <span class="nav-username" th:text="${userName}">Hello</span>
+            <form th:unless="authenticated" class="navbar-form navbar-form-login-logout" th:action="@{/login}" method="GET">
+                <button class="btn btn-login" type="submit">[[#{Nav.button.login}]]</button>
+            </form>
+            <form th:if="authenticated" class="navbar-form navbar-form-login-logout" th:action="@{/logout}" method="POST">
+                <button class="btn btn-logout" type="submit">[[#{Nav.button.logout}]]</button>
+            </form>
         </nav>
         <!--FOOTER-->
-        <footer>
+        <footer th:fragment="footer">
             <span>[[#{Gena.vocation}]] &copy; 2020</span>
         </footer>
     </body>

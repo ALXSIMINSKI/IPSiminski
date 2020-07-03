@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>[[#{Navigation.make.online.order}]]</title>
+
+    <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/resources/css/common.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:insert="~{fragments::navbar(${userName})}"></div>
+<div id="main">
+
+</div>
+<div th:insert="~{fragments::footer}"></div>
+</body>
+</html>

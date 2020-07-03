@@ -33,8 +33,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/registration").not().fullyAuthenticated()
-                .antMatchers("/resources/**", "/admin/**").hasRole("ADMIN")
-                .antMatchers("/").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/resources/**", "/").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/login").permitAll();

@@ -59,24 +59,54 @@ footer > span {
     background-color: #aeae47;
 }
 
+.navbar-form {
+    display: inline-block;
+    position: relative;
+}
+
+.nav-username {
+    display: inline;
+    position: relative;
+    /*left: 100px;*/
+}
+
+.navbar-form-login-logout {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}
+
 .btn-download {
     background-color: transparent;
     border-color: #4cae4c;
     color: #4cae4c;
-    padding-left: auto;
-    margin-left: auto;
-    left: auto;
 }
 
 .btn-download:hover {
-    color: #aeae47;
+    color: #4cae4c;
     box-shadow: 0 0 5px #4cae4c;
 }
 
-.navbar-form {
-    display: inline-block;
-    position: absolute;
-    right: 0;
+.btn-login {
+    background-color: transparent;
+    border-color: #4cae4c;
+    color: #4cae4c;
+}
+
+.btn-logout {
+    background-color: transparent;
+    border-color: #4cae4c;
+    color: #4cae4c;
+}
+
+.btn-login:hover {
+    color: #4cae4c;
+    box-shadow: 0 0 5px #4cae4c;
+}
+
+.btn-logout:hover {
+    color: #4cae4c;
+    box-shadow: 0 0 5px #4cae4c;
 }
 
 .navbar-link-custom {

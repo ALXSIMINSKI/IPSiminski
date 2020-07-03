@@ -20,6 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -92,13 +93,51 @@ public class SecurityController {
 
     @GetMapping({"/", "/welcome"})
     public String welcome(Model model) {
-        model.addAttribute("userName", securityService.findLoggedInUsername());
+        String username = securityService.findLoggedInUsername();
+        if(StringUtils.isEmpty(username)) {
+            username = "Welcome";
+        }
+        model.addAttribute("userName", username);
         return "welcome";
     }
 
     @GetMapping("/admin")
     public String admin(Model model) {
-        model.addAttribute("userName", securityService.findLoggedInUsername());
+        String username = securityService.findLoggedInUsername();
+        if(StringUtils.isEmpty(username)) {
+            username = "Welcome";
+        }
+        model.addAttribute("userName", username);
         return "admin";
+    }
+
+    @GetMapping("/contacts")
+    public String contacts(Model model) {
+        String username = securityService.findLoggedInUsername();
+        if(StringUtils.isEmpty(username)) {
+            username = "Welcome";
+        }
+        model.addAttribute("userName", username);
+        return "contacts";
+    }
+
+    @GetMapping("/offerings")
+    public String offerings(Model model) {
+        String username = securityService.findLoggedInUsername();
+        if(StringUtils.isEmpty(username)) {
+            username = "Welcome";
+        }
+        model.addAttribute("userName", username);
+        return "offerings";
+    }
+
+    @GetMapping("/order")
+    public String order(Model model) {
+        String username = securityService.findLoggedInUsername();
+        if(StringUtils.isEmpty(username)) {
+            username = "Welcome";
+        }
+        model.addAttribute("userName", username);
+        return "order";
     }
 }
