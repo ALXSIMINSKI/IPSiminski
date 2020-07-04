@@ -5,17 +5,17 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Create an account</title>
+        <title>[[#{Registration.title}]]</title>
 
         <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
         <link th:href="@{/resources/css/common.css}" rel="stylesheet" type="text/css">
         <script th:src="@{/resources/js/bootstrap.min.js}"></script>
     </head>
     <body>
-        <!--<div th:insert="~{fragments::navbar}"></div>-->
+    <div th:insert="~{fragments::navbar(${isAnon},${userForm.getUsername()})}"></div>
         <div id="main">
             <form method="POST" th:object="${userForm}" th:action="@{/registration}">
-                <h2>Create your account</h2>
+                <h2>[[#{Registration.header}]]</h2>
                 <div>
                     <input type="text" th:field="*{username}" placeholder="Username" autofocus="true"/>
                     <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error with data entered</span>
@@ -28,9 +28,9 @@
                     <input type="password" th:field="*{confirmPassword}" placeholder="Confirm password"/>
                     <span th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Error with data entered</span>
                 </div>
-                <button type="submit" value="Submit">Submit</button>
+                <button type="submit" value="Submit">[[#{Registration.button}]]</button>
             </form>
         </div>
-        <!--<div th:insert="~{fragments::footer}"></div>-->
+        <div th:insert="~{fragments::footer}"></div>
     </body>
 </html>

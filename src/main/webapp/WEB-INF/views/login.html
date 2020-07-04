@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <title>Log in</title>
+    <title>[[#{Login.title}]]</title>
 
-        <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
-        <link th:href="@{/resources/css/common.css}" rel="stylesheet" type="text/css">
-        <script th:src="@{/resources/js/bootstrap.min.js}"></script>
-    </head>
-    <body>
-        <!--<div th:insert="~{fragments::navbar(user)}"></div>-->
-        <div id="main">
-            <form method="POST" th:object="${userForm}" th:action="@{/login}">
-                <div>
-                    <input name="username" th:field="*{username}" type="text" placeholder="Username" autofocus="true"/>
-                    <span th:if="${badCredentials}" th:text="#{Login.failed.bad.credentials}">Login failed</span>
-                    <span th:if="${loginFailed}" th:text="#{Login.failed}">Login failed</span>
-                </div>
-                <div>
-                    <input name="password" th:field="*{password}" type="password" placeholder="Password"/>
-                </div>
-
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-                <button type="submit">Log In</button>
-                <h4><a th:href="@{/registration}">Create an account</a></h4>
-            </form>
+    <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/resources/css/common.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:insert="~{fragments::navbar(${isAnon},${userForm.getUsername()})}"></div>
+<div id="main">
+    <form method="POST" th:object="${userForm}" th:action="@{/login}">
+        <h2>[[#{Login.header}]]</h2>
+        <div>
+            <input name="username" th:field="*{username}" type="text" placeholder="Username" autofocus="true"/>
+            <span th:if="${badCredentials}" th:text="#{Login.failed.bad.credentials}">Login failed</span>
+            <span th:if="${loginFailed}" th:text="#{Login.failed}">Login failed</span>
         </div>
-        <!--<div th:insert="~{fragments::footer}"></div>-->
-    </body>
+        <div>
+            <input name="password" th:field="*{password}" type="password" placeholder="Password"/>
+        </div>
+
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+        <button type="submit">[[#{Button.login}]]</button>
+        <h4><a th:href="@{/registration}">[[#{Registration.link}]]</a></h4>
+    </form>
+</div>
+<div th:insert="~{fragments::footer}"></div>
+</body>
 </html>

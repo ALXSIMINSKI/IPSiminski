@@ -6,32 +6,22 @@ import by.siminski.services.user.UserService;
 import by.siminski.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import static org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
 
 @Controller
 public class SecurityController {
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
 
     @Autowired
     private UserService userService;
@@ -48,14 +38,16 @@ public class SecurityController {
 
     @GetMapping("/registration")
     public String registration(Model model) {
+        model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
         model.addAttribute("userForm", new User());
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
         userValidator.validate(userForm, bindingResult);
         if (bindingResult.hasErrors()) {
+            model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
             return "registration";
         }
         userService.save(userForm);
@@ -64,80 +56,16 @@ public class SecurityController {
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login(HttpServletRequest request, Model model) {
+        if(request.getSession().getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION) != null) {
+            if(request.getSession().getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION) instanceof BadCredentialsException) {
+                model.addAttribute("badCredentials", true);
+            } else {
+                model.addAttribute("loginFailed", true);
+            }
+        }
+        model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
         model.addAttribute("userForm", new User());
         return "login";
-    }
-
-    @PostMapping("/login")
-    public String login(@ModelAttribute User userForm, HttpServletRequest request, Model model) {
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userForm.getUsername(), userForm.getPassword());
-        Authentication authentication;
-        try {
-            authentication = authenticationManager.authenticate(authenticationToken);
-        } catch (BadCredentialsException bcException) {
-            model.addAttribute("userForm", new User());
-            model.addAttribute("badCredentials", true);
-            return "login";
-        } catch (AuthenticationException authException) {
-            model.addAttribute("userForm", new User());
-            model.addAttribute("loginFailed", true);
-            return "login";
-        }
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(authentication);
-        HttpSession session = request.getSession(true);
-        session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, securityContext);
-        return "redirect:/welcome";
-    }
-
-    @GetMapping({"/", "/welcome"})
-    public String welcome(Model model) {
-        String username = securityService.findLoggedInUsername();
-        if(StringUtils.isEmpty(username)) {
-            username = "Welcome";
-        }
-        model.addAttribute("userName", username);
-        return "welcome";
-    }
-
-    @GetMapping("/admin")
-    public String admin(Model model) {
-        String username = securityService.findLoggedInUsername();
-        if(StringUtils.isEmpty(username)) {
-            username = "Welcome";
-        }
-        model.addAttribute("userName", username);
-        return "admin";
-    }
-
-    @GetMapping("/contacts")
-    public String contacts(Model model) {
-        String username = securityService.findLoggedInUsername();
-        if(StringUtils.isEmpty(username)) {
-            username = "Welcome";
-        }
-        model.addAttribute("userName", username);
-        return "contacts";
-    }
-
-    @GetMapping("/offerings")
-    public String offerings(Model model) {
-        String username = securityService.findLoggedInUsername();
-        if(StringUtils.isEmpty(username)) {
-            username = "Welcome";
-        }
-        model.addAttribute("userName", username);
-        return "offerings";
-    }
-
-    @GetMapping("/order")
-    public String order(Model model) {
-        String username = securityService.findLoggedInUsername();
-        if(StringUtils.isEmpty(username)) {
-            username = "Welcome";
-        }
-        model.addAttribute("userName", username);
-        return "order";
     }
 }

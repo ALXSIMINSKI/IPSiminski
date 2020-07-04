@@ -34,10 +34,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/registration").not().fullyAuthenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/resources/**", "/").permitAll()
+                .antMatchers("/resources/**").permitAll()
                 .anyRequest().authenticated()
-                .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/login").permitAll();
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/welcome", true)
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login").permitAll();
     }
 
     @Autowired
