@@ -10,13 +10,15 @@
             <form class="navbar-form" th:action="@{/download/pl}" method="POST">
                 <button class="btn btn-download" type="submit">[[#{Download.pricelist}]]</button>
             </form>
-            <span th:unless="${isAnon}" class="nav-username" th:text="${userName}">Hello</span>
-            <form th:if="${isAnon}" class="navbar-form navbar-form-login-logout" th:action="@{/login}" method="GET">
-                <button class="btn btn-login" type="submit">[[#{Nav.button.login}]]</button>
-            </form>
-            <form th:unless="${isAnon}" class="navbar-form navbar-form-login-logout" th:action="@{/logout}" method="POST">
-                <button class="btn btn-logout" type="submit">[[#{Nav.button.logout}]]</button>
-            </form>
+            <div class="navbar-form-login-logout">
+                <span th:unless="${isAnon}" th:text="${userName}">Hello</span>
+                <form th:if="${isAnon}" class="navbar-form" th:action="@{/login}" method="GET">
+                    <button class="btn btn-login" type="submit">[[#{Nav.button.login}]]</button>
+                </form>
+                <form th:unless="${isAnon}" class="navbar-form" th:action="@{/logout}" method="POST">
+                    <button class="btn btn-logout" type="submit">[[#{Nav.button.logout}]]</button>
+                </form>
+            </div>
         </nav>
         <!--FOOTER-->
         <footer th:fragment="footer">

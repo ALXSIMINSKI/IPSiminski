@@ -72,12 +72,6 @@ footer > span {
     position: relative;
 }
 
-.nav-username {
-    display: inline;
-    position: relative;
-    /*left: 100px;*/
-}
-
 .navbar-form-login-logout {
     display: inline-block;
     position: absolute;
