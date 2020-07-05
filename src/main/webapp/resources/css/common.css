@@ -17,7 +17,8 @@ body{
     z-index:1;
     background-color: #fff;
     box-shadow: 0 10px 5px rgba(0,0,0,0.25);
-    background-image: url("/resources/img/background.png");
+    background-image: url("https://mdbootstrap.com/img/Photos/Others/images/89.jpg");
+    /*background-image: url("/resources/img/background.png");*/
     background-size: cover;
 }
 
