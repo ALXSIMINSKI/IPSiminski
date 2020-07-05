@@ -14,9 +14,9 @@
 <body>
 <div th:insert="~{fragments::navbar(${isAnon},${userForm.getUsername()})}"></div>
 <div id="main">
-    <div class="text-center mt-200">
+    <div class="text-center pt-200">
         <form method="POST" th:object="${userForm}" th:action="@{/login}">
-            <h1 class="horizontal-centered-text">[[#{Login.header}]]</h1>
+            <h1>[[#{Login.header}]]</h1>
             <span class="error-label mb-5" th:if="${badCredentials}" th:text="#{Login.failed.bad.credentials}">Login failed</span>
             <span class="error-label mb-5" th:if="${loginFailed}" th:text="#{Login.failed}">Login failed</span>
             <div>
@@ -31,7 +31,7 @@
         <form method="GET" th:action="@{/registration}">
             <button class="btn btn-success mb-5 btn-lg w-300" type="submit">[[#{Registration.link}]]</button>
         </form>
-        </div>
+    </div>
 </div>
 <div th:insert="~{fragments::footer}"></div>
 </body>

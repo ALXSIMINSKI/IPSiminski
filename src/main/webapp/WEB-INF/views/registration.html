@@ -14,10 +14,9 @@
 <body>
 <div th:insert="~{fragments::navbar(${isAnon},${userForm.getUsername()})}"></div>
 <div id="main">
-    <div class="text-center mt-200">
-
+    <div class="text-center pt-200">
         <form method="POST" th:object="${userForm}" th:action="@{/registration}">
-            <h1 class="horizontal-centered-text">[[#{Registration.header}]]</h1>
+            <h1>[[#{Registration.header}]]</h1>
             <div>
                 <input class="mb-5 input-lg w-300" type="text" th:field="*{username}" th:placeholder="#{Field.username}" autofocus="true"/>
             </div>

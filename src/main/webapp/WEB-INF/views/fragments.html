@@ -4,13 +4,16 @@
     <body>
         <!--NAVBAR-->
         <nav th:fragment="navbar(isAnon,userName)" class="navbar">
-            <a class="navbar-link-custom" th:href="@{/welcome}">[[#{Gena.surname}]]</a>
+            <a class="navbar-link-custom" th:href="@{/welcome}">[[#{Navigation.main}]]</a>
             <a class="navbar-link-custom" th:href="@{/offerings}">[[#{Navigation.offerings}]]</a>
             <a class="navbar-link-custom" th:href="@{/order}">[[#{Navigation.make.online.order}]]</a>
             <a class="navbar-link-custom" th:href="@{/contacts}">[[#{Navigation.contacts}]]</a>
             <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-admin-settings" th:href="@{/admin}">[[#{Navigation.settings}]]</a>
             <form class="navbar-form" th:action="@{/download/pl}" method="POST">
                 <button class="btn btn-download" type="submit">[[#{Download.pricelist}]]</button>
+            </form>
+            <form class="navbar-form" th:action="@{/download/agreement}" method="POST">
+                <button class="btn btn-download" type="submit">[[#{Download.agreement}]]</button>
             </form>
             <div class="navbar-form-login-logout">
                 <span th:unless="${isAnon}" th:text="${userName}">Hello</span>
@@ -25,7 +28,6 @@
         <!--FOOTER-->
         <footer th:fragment="footer">
             <img src="/resources/img/ipsiminski.png" class="img-fluid" alt="">
-            <span>&copy; 2020</span>
         </footer>
     </body>
 </html>
