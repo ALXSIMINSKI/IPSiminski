@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <body>
         <!--NAVBAR-->
         <nav th:fragment="navbar(isAnon,userName)" class="navbar">
@@ -7,6 +8,7 @@
             <a class="navbar-link-custom" th:href="@{/offerings}">[[#{Navigation.offerings}]]</a>
             <a class="navbar-link-custom" th:href="@{/order}">[[#{Navigation.make.online.order}]]</a>
             <a class="navbar-link-custom" th:href="@{/contacts}">[[#{Navigation.contacts}]]</a>
+            <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-admin-settings" th:href="@{/admin}">[[#{Navigation.settings}]]</a>
             <form class="navbar-form" th:action="@{/download/pl}" method="POST">
                 <button class="btn btn-download" type="submit">[[#{Download.pricelist}]]</button>
             </form>

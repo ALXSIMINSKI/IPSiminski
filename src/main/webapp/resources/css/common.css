@@ -15,7 +15,7 @@ body{
     position:relative;
     z-index:1;
     background-color: #fff;
-    padding: 0 0 100px;
+    padding: 0 0 900px;
     box-shadow: 0 10px 5px rgba(0,0,0,0.25);
 }
 
@@ -135,4 +135,17 @@ footer > span {
 
 .w-300 {
     width: 300px;
+}
+
+.nav-admin-settings {
+    color: #ffef6b;
+    border-radius: 5px;
+    height: 50px;
+    padding: 10px 50px;
+    font-size: 15px;
+    line-height: 50px
+}
+
+.nav-admin-settings:hover {
+    color: #ffef6b;
 }
