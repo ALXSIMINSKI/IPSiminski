@@ -9,10 +9,10 @@
             <a class="navbar-link-custom" th:href="@{/order}">[[#{Navigation.make.online.order}]]</a>
             <a class="navbar-link-custom" th:href="@{/contacts}">[[#{Navigation.contacts}]]</a>
             <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-admin-settings" th:href="@{/admin}">[[#{Navigation.settings}]]</a>
-            <form class="navbar-form" th:action="@{/download/pl}" method="POST">
+            <form class="navbar-form" th:action="@{/download/pl}" method="GET">
                 <button class="btn btn-download" type="submit">[[#{Download.pricelist}]]</button>
             </form>
-            <form class="navbar-form" th:action="@{/download/agreement}" method="POST">
+            <form class="navbar-form" th:action="@{/download/agreement}" method="GET">
                 <button class="btn btn-download" type="submit">[[#{Download.agreement}]]</button>
             </form>
             <div class="navbar-form-login-logout">
