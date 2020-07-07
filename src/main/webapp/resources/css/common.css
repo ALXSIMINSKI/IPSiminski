@@ -152,3 +152,20 @@ footer > img {
 .start-page-header {
     color: #4cae4c;
 }
+
+.zag {
+    border: none;
+    width: 95%;
+    margin-left: 2.5%;
+    height: 2px;
+    background: #4cae4c;
+    background-size: 10px 10px;
+}
+
+.first-header {
+    margin-top: 0;
+}
+
+.setting-form {
+    margin-left: 2.5%;
+}
