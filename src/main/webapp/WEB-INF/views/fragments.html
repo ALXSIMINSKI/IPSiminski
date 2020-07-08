@@ -9,7 +9,7 @@
             <a class="navbar-link-custom" th:href="@{/order}">[[#{Navigation.make.online.request}]]</a>
             <a class="navbar-link-custom" th:href="@{/contacts}">[[#{Navigation.contacts}]]</a>
             <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-admin-settings" th:href="@{/admin}">[[#{Navigation.settings}]]</a>
-            <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-admin-settings" th:href="@{/my_requests}">[[#{Navigation.myrequests}]]</a>
+            <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-admin-settings" th:href="@{/my_requests}">[[#{Navigation.requests}]]</a>
             <form class="navbar-form" th:action="@{/download/pl}" method="GET">
                 <button class="btn btn-download" type="submit">[[#{Download.pricelist}]]</button>
             </form>
