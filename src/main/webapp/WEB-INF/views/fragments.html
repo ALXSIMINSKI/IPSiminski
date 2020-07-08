@@ -6,10 +6,10 @@
         <nav th:fragment="navbar(isAnon,userName)" class="navbar">
             <a class="navbar-link-custom" th:href="@{/welcome}">[[#{Navigation.main}]]</a>
             <a class="navbar-link-custom" th:href="@{/offerings}">[[#{Navigation.offerings}]]</a>
-            <a class="navbar-link-custom" th:href="@{/order}">[[#{Navigation.make.online.request}]]</a>
+            <a class="navbar-link-custom" th:href="@{/make-request}">[[#{Navigation.make.online.request}]]</a>
             <a class="navbar-link-custom" th:href="@{/contacts}">[[#{Navigation.contacts}]]</a>
-            <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-admin-settings" th:href="@{/admin}">[[#{Navigation.settings}]]</a>
-            <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-admin-settings" th:href="@{/my_requests}">[[#{Navigation.requests}]]</a>
+            <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-admin-settings" th:href="@{/settings}">[[#{Navigation.settings}]]</a>
+            <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-admin-settings" th:href="@{/requests}">[[#{Navigation.requests}]]</a>
             <form class="navbar-form" th:action="@{/download/pl}" method="GET">
                 <button class="btn btn-download" type="submit">[[#{Download.pricelist}]]</button>
             </form>

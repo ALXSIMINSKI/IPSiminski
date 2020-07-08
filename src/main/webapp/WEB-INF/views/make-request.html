@@ -15,8 +15,8 @@
 <div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
 <div id="main">
     <div th:if="${#strings.isEmpty(result)}" class="text-center pt-100">
-        <form method="POST" th:object="${requestForm}" th:action="@{/order}">
-            <h1>[[#{Order.header}]]</h1>
+        <form method="POST" th:object="${requestForm}" th:action="@{/make-request}">
+            <h1>[[#{Make.request.header}]]</h1>
             <div>
                 <input class="input-lg" type="text" th:field="*{username}" th:placeholder="#{Request.username}" th:required="required" autofocus="true"/>
             </div>

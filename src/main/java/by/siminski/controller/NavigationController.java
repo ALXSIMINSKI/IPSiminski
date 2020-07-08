@@ -41,21 +41,21 @@ public class NavigationController {
         return "welcome";
     }
 
-    @GetMapping("/admin")
-    public String admin(Model model) {
+    @GetMapping("/settings")
+    public String settings(Model model) {
         String username = securityService.findLoggedInUsername();
         model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
         model.addAttribute("userName", username);
-        return "admin";
+        return "settings";
     }
 
-    @GetMapping("/my_requests")
+    @GetMapping("/requests")
     public String requests(Model model) {
         String username = securityService.findLoggedInUsername();
         model.addAttribute("allRequests", orderRequestService.getAllRequests());
         model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
         model.addAttribute("userName", username);
-        return "my_requests";
+        return "requests";
     }
 
     @GetMapping("/contacts")
@@ -74,28 +74,28 @@ public class NavigationController {
         return "offerings";
     }
 
-    @GetMapping("/order")
-    public String order(Model model) {
+    @GetMapping("/make-request")
+    public String makeRequest(Model model) {
         String username = securityService.findLoggedInUsername();
         model.addAttribute("requestForm", new OrderRequest());
         model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
         model.addAttribute("userName", username);
-        return "order";
+        return "make-request";
     }
 
-    @PostMapping("/order")
-    public String order(@ModelAttribute("requestForm") OrderRequest requestForm, Model model, RedirectAttributes redirectAttributes, BindingResult bindingResult) {
+    @PostMapping("/make-request")
+    public String makeRequest(@ModelAttribute("requestForm") OrderRequest requestForm, Model model, RedirectAttributes redirectAttributes, BindingResult bindingResult) {
         String username = securityService.findLoggedInUsername();
         model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
         model.addAttribute("userName", username);
 
         orderRequestValidator.validate(requestForm, bindingResult);
         if(bindingResult.hasErrors()) {
-            return "order";
+            return "make-request";
         }
 
         orderRequestService.registerRequest(requestForm);
         redirectAttributes.addFlashAttribute("result", "Your request has been submitted. I'll call you for conforming. :)");
-        return "redirect:/order";
+        return "redirect:/make-request";
     }
 }

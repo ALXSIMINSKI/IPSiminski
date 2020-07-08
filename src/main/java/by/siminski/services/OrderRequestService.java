@@ -13,4 +13,5 @@ public interface OrderRequestService {
 
     void registerRequest(Request request);
 
+    void closeRequest(Request request);
 }

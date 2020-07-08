@@ -27,4 +27,9 @@ public class OrderRequestServiceImpl implements OrderRequestService{
             orderRequestDao.save((OrderRequest) request);
         }
     }
+
+    @Override
+    public void closeRequest(Request request) {
+
+    }
 }
