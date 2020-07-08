@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>[[#{Navigation.make.online.order}]]</title>
+    <title>[[#{Navigation.make.online.request}]]</title>
 
     <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/resources/css/common.css}" rel="stylesheet" type="text/css">
@@ -14,7 +14,37 @@
 <body>
 <div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
 <div id="main">
-
+    <div th:if="${#strings.isEmpty(result)}" class="text-center pt-100">
+        <form method="POST" th:object="${requestForm}" th:action="@{/order}">
+            <h1>[[#{Order.header}]]</h1>
+            <div>
+                <input class="input-lg" type="text" th:field="*{username}" th:placeholder="#{Request.username}" th:required="required" autofocus="true"/>
+            </div>
+            <span class="error-label mb-5" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error with data entered</span>
+            <div>
+                <input class="input-lg" type="text" th:field="*{organization}" th:required="required" th:placeholder="#{Request.organization}"/>
+            </div>
+            <span class="error-label mb-5" th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}">Error with data entered</span>
+            <div>
+                <input class="input-lg" type="text" th:field="*{phone}" th:required="required" th:placeholder="#{Request.phone}"/>
+            </div>
+            <span class="error-label mb-5" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Error with data entered</span>
+            <div>
+                <input class="input-lg" type="text" th:field="*{email}" th:placeholder="#{Request.email}"/>
+            </div>
+            <span class="error-label mb-5" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error with data entered</span>
+            <div>
+                <textarea rows="10" cols="45" class="input-lg" th:field="*{description}" th:required="required" th:placeholder="#{Request.description}"></textarea>
+            </div>
+            <span class="error-label mb-5" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error with data entered</span>
+            <br>
+            <button class="btn btn-success mb-5 btn-lg w-300" type="submit" value="Submit">[[#{Size.requestForm.submit}]]</button>
+        </form>
+    </div>
+    <div th:unless="${#strings.isEmpty(result)}" class="text-center pt-200">
+        <h1 class="text-center pt-100" th:text="${result}"></h1>
+        <a class="link-text" th:href="@{/welcome}" th:text="#{Navigation.back.to.main}"></a>
+    </div>
 </div>
 <div th:insert="~{fragments::footer}"></div>
 </body>

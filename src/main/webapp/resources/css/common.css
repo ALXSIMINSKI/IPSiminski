@@ -169,3 +169,11 @@ footer > img {
 .setting-form {
     margin-left: 2.5%;
 }
+
+.pt-100 {
+    padding-top: 100px;
+}
+
+.link-text {
+    font-size: large;
+}
