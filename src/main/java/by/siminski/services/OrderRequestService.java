@@ -4,6 +4,7 @@ import by.siminski.model.request.OrderRequest;
 import by.siminski.model.request.Request;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Service
@@ -13,5 +14,5 @@ public interface OrderRequestService {
 
     void registerRequest(Request request);
 
-    void closeRequest(Request request);
+    void closeRequest(BigInteger requestIdToClose);
 }

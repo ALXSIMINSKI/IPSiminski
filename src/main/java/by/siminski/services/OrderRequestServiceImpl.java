@@ -7,6 +7,7 @@ import by.siminski.model.request.RequestStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Service
@@ -29,7 +30,9 @@ public class OrderRequestServiceImpl implements OrderRequestService{
     }
 
     @Override
-    public void closeRequest(Request request) {
-
+    public void closeRequest(BigInteger requestIdToClose) {
+        OrderRequest orderRequest = orderRequestDao.getOne(requestIdToClose);
+        orderRequest.setStatus(RequestStatus.CLOSED);
+        orderRequestDao.save(orderRequest);
     }
 }

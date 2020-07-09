@@ -33,6 +33,9 @@
                 <th th:text="${requestItem.email}">EMAIL</th>
                 <th th:text="${requestItem.description}">DESCRIPTION</th>
                 <th th:text="${requestItem.status}">STATUS</th>
+                <th>
+                    <a th:href="@{/close-request(id=${requestItem.id})}" class="btn btn-danger">Close request</a>
+                </th>
             </tr>
         </table>
     </div>

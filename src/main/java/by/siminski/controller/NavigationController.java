@@ -12,10 +12,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.math.BigInteger;
 
 @Controller
 public class NavigationController {
@@ -97,5 +97,15 @@ public class NavigationController {
         orderRequestService.registerRequest(requestForm);
         redirectAttributes.addFlashAttribute("result", "Your request has been submitted. I'll call you for conforming. :)");
         return "redirect:/make-request";
+    }
+
+    @GetMapping("/close-request")
+    public String closeRequest(@RequestParam(name = "id") String requestIdToClose, Model model) {
+        String username = securityService.findLoggedInUsername();
+        model.addAttribute("userName", username);
+        model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
+
+        orderRequestService.closeRequest(new BigInteger(requestIdToClose));
+        return "redirect:/requests";
     }
 }
