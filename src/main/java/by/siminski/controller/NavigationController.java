@@ -13,7 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
+import org.thymeleaf.spring5.view.ThymeleafView;
 
 import java.math.BigInteger;
 
@@ -100,12 +103,12 @@ public class NavigationController {
     }
 
     @GetMapping("/close-request")
-    public String closeRequest(@RequestParam(name = "id") String requestIdToClose, Model model) {
+    public String closeRequest(@RequestParam(name = "id") BigInteger requestIdToClose, Model model) {
         String username = securityService.findLoggedInUsername();
         model.addAttribute("userName", username);
         model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
 
-        orderRequestService.closeRequest(new BigInteger(requestIdToClose));
+        orderRequestService.closeRequest(requestIdToClose);
         return "redirect:/requests";
     }
 }
