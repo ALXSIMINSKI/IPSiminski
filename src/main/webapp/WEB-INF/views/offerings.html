@@ -10,11 +10,13 @@
     <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/resources/css/common.css}" rel="stylesheet" type="text/css">
     <script th:src="@{/resources/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/common.js}"></script>
 </head>
 <body>
 <div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
 <div id="main">
 
+<button onclick="topFunction()" id="btnUp"></button>
 </div>
 <div th:insert="~{fragments::footer}"></div>
 </body>
