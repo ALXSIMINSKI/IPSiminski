@@ -15,3 +15,15 @@ function topFunction() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+
+function reloadRequestsTable(request_id) {
+    var request = new XMLHttpRequest();
+    var url = "close-request?id=" + request_id;
+    request.open('GET', url);
+    request.addEventListener("readystatechange", function() {
+        if (request.readyState === 4 && request.status === 200) {
+            alert(request.responseText);
+        }
+    });
+    request.send();
+}

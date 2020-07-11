@@ -103,11 +103,7 @@ public class NavigationController {
     }
 
     @GetMapping("/close-request")
-    public String closeRequest(@RequestParam(name = "id") BigInteger requestIdToClose, Model model) {
-        String username = securityService.findLoggedInUsername();
-        model.addAttribute("userName", username);
-        model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
-
+    public String closeRequest(@RequestParam(name = "id") BigInteger requestIdToClose) {
         orderRequestService.closeRequest(requestIdToClose);
         return "redirect:/requests";
     }
