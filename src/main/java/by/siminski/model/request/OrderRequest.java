@@ -1,10 +1,13 @@
 package by.siminski.model.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.math.BigInteger;
 
 @Entity
 @Table(name = "requests")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class OrderRequest implements Request{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

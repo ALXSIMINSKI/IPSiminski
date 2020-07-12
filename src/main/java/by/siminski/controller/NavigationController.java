@@ -4,6 +4,7 @@ import by.siminski.model.request.OrderRequest;
 import by.siminski.services.OrderRequestService;
 import by.siminski.services.security.SecurityService;
 import by.siminski.validator.OrderRequestValidator;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -13,12 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
-import org.thymeleaf.spring5.view.ThymeleafView;
 
 import java.math.BigInteger;
+import java.util.List;
 
 @Controller
 public class NavigationController {
@@ -103,8 +102,8 @@ public class NavigationController {
     }
 
     @GetMapping("/close-request")
-    public String closeRequest(@RequestParam(name = "id") BigInteger requestIdToClose) {
+    public @ResponseBody List<OrderRequest> closeRequest(@RequestParam(name = "id") BigInteger requestIdToClose) {
         orderRequestService.closeRequest(requestIdToClose);
-        return "redirect:/requests";
+        return orderRequestService.getAllRequests();
     }
 }

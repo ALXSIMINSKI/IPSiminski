@@ -17,13 +17,42 @@ function topFunction() {
 }
 
 function reloadRequestsTable(request_id) {
-    var request = new XMLHttpRequest();
-    var url = "close-request?id=" + request_id;
+    let request = new XMLHttpRequest();
+    let url = "close-request?id=" + request_id;
     request.open('GET', url);
     request.addEventListener("readystatechange", function() {
         if (request.readyState === 4 && request.status === 200) {
-            alert(request.responseText);
+            let table = document.getElementById("requestsTable");
+            table.innerHTML = '';
+            let requests = JSON.parse(request.responseText);
+            buildRequestsTable(table, requests);
         }
     });
     request.send();
+}
+
+function buildRequestsTable(table, jsonRequests) {
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+    for(let key of Object.keys(jsonRequests[0])) {
+        let th = document.createElement("th");
+        let headerText = document.createTextNode(key);
+        th.appendChild(headerText);
+        row.appendChild(th);
+    }
+    for(let element of jsonRequests) {
+        let row = table.insertRow();
+        for(let key of Object.keys(element)) {
+            let cell = row.insertCell();
+            let text = document.createTextNode(element[key]);
+            cell.appendChild(text);
+        }
+        let button = document.createElement("button");
+        button.addEventListener("click", function () {
+            reloadRequestsTable(element["id"]);
+        });
+        button.setAttribute('class', 'btn btn-danger');
+        button.appendChild(document.createTextNode('Button.close.request'));
+        row.appendChild(button);
+    }
 }

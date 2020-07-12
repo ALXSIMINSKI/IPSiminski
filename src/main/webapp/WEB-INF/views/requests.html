@@ -15,7 +15,7 @@
 <div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
 <div id="main">
     <div class="text-center pt-100">
-        <table>
+        <table id="requestsTable">
             <tr>
                 <th th:text="#{Table.requests.header.id}">ID</th>
                 <th th:text="#{Table.requests.header.username}">USERNAME</th>
@@ -26,16 +26,16 @@
                 <th th:text="#{Table.requests.header.status}">STATUS</th>
             </tr>
             <tr th:each="requestItem:${allRequests}">
-                <th th:text="${requestItem.id}">ID</th>
-                <th th:text="${requestItem.username}">USERNAME</th>
-                <th th:text="${requestItem.organization}">ORGANIZATION</th>
-                <th th:text="${requestItem.phone}">PHONE</th>
-                <th th:text="${requestItem.email}">EMAIL</th>
-                <th th:text="${requestItem.description}">DESCRIPTION</th>
-                <th th:text="${requestItem.status}">STATUS</th>
-                <th>
-                    <button th:onclick="'reloadRequestsTable('+${requestItem.id}+');'" class="btn btn-danger">Close</button>
-                </th>
+                <td th:text="${requestItem.id}">ID</td>
+                <td th:text="${requestItem.username}">USERNAME</td>
+                <td th:text="${requestItem.organization}">ORGANIZATION</td>
+                <td th:text="${requestItem.phone}">PHONE</td>
+                <td th:text="${requestItem.email}">EMAIL</td>
+                <td th:text="${requestItem.description}">DESCRIPTION</td>
+                <td th:text="${requestItem.status}">STATUS</td>
+                <td>
+                    <button th:onclick="'reloadRequestsTable('+${requestItem.id}+');'" class="btn btn-danger">[[#{Button.close.request}]]</button>
+                </td>
             </tr>
         </table>
     </div>
