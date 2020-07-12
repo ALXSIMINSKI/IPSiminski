@@ -40,8 +40,9 @@ function buildRequestsTable(table, jsonRequests) {
         th.appendChild(headerText);
         row.appendChild(th);
     }
+    let tbody = table.createTBody();
     for(let element of jsonRequests) {
-        let row = table.insertRow();
+        let row = tbody.insertRow();
         for(let key of Object.keys(element)) {
             let cell = row.insertCell();
             let text = document.createTextNode(element[key]);
