@@ -4,7 +4,6 @@ import by.siminski.model.request.OrderRequest;
 import by.siminski.services.OrderRequestService;
 import by.siminski.services.security.SecurityService;
 import by.siminski.validator.OrderRequestValidator;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
