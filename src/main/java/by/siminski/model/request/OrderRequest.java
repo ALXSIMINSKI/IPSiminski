@@ -8,7 +8,7 @@ import java.math.BigInteger;
 @Entity
 @Table(name = "requests")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class OrderRequest implements Request{
+public class OrderRequest implements Request {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private BigInteger id;

@@ -26,11 +26,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    public SpringSecurityDialect springSecurityDialect() {
-//        return new SpringSecurityDialect();
-//    }
-
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
