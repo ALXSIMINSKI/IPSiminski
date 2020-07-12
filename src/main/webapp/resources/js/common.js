@@ -52,8 +52,7 @@ function buildRequestsTable(table, jsonRequests) {
         button.addEventListener("click", function () {
             reloadRequestsTable(element["ID"]);
         });
-        button.setAttribute('class', 'btn btn-danger');
-        button.appendChild(document.createTextNode('Close request'));
+        button.setAttribute('class', 'btn-req-cancel');
         row.appendChild(button);
     }
 }

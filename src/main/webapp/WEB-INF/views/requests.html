@@ -34,7 +34,7 @@
                 <td th:text="${requestItem.id}">ID</td>
                 <td th:text="${requestItem.email}">EMAIL</td>
                 <td>
-                    <button th:onclick="'reloadRequestsTable('+${requestItem.id}+');'" class="btn btn-danger">[[#{Button.close.request}]]</button>
+                    <button th:onclick="'reloadRequestsTable('+${requestItem.id}+');'" class="btn-req-cancel"></button>
                 </td>
             </tr>
         </table>
