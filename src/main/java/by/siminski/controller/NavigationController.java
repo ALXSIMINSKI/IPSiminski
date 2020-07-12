@@ -4,8 +4,12 @@ import by.siminski.model.request.OrderRequest;
 import by.siminski.services.OrderRequestService;
 import by.siminski.services.security.SecurityService;
 import by.siminski.validator.OrderRequestValidator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,7 +20,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigInteger;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
 
 @Controller
 public class NavigationController {
@@ -33,6 +39,9 @@ public class NavigationController {
 
     @Autowired
     OrderRequestValidator orderRequestValidator;
+
+    @Autowired
+    MessageSource messageSource;
 
     @GetMapping({"/", "/welcome"})
     public String welcome(Model model) {
@@ -101,8 +110,20 @@ public class NavigationController {
     }
 
     @GetMapping("/close-request")
-    public @ResponseBody List<OrderRequest> closeRequest(@RequestParam(name = "id") BigInteger requestIdToClose) {
+    public @ResponseBody String closeRequest(@RequestParam(name = "id") BigInteger requestIdToClose) {
         orderRequestService.closeRequest(requestIdToClose);
-        return orderRequestService.getAllRequests();
+        JSONArray jsonArray = new JSONArray();
+        for (OrderRequest request : orderRequestService.getAllRequests()) {
+            JSONObject jsonRequest = new JSONObject();
+            jsonRequest.put(messageSource.getMessage("Table.requests.header.id", null, LocaleContextHolder.getLocale()), request.getId().toString());
+            jsonRequest.put(messageSource.getMessage("Table.requests.header.username", null, LocaleContextHolder.getLocale()), request.getUsername());
+            jsonRequest.put(messageSource.getMessage("Table.requests.header.organization", null, LocaleContextHolder.getLocale()), request.getOrganization());
+            jsonRequest.put(messageSource.getMessage("Table.requests.header.phone", null, LocaleContextHolder.getLocale()), request.getPhone());
+            jsonRequest.put(messageSource.getMessage("Table.requests.header.email", null, LocaleContextHolder.getLocale()), request.getEmail());
+            jsonRequest.put(messageSource.getMessage("Table.requests.header.description", null, LocaleContextHolder.getLocale()), request.getDescription());
+            jsonRequest.put(messageSource.getMessage("Table.requests.header.status", null, LocaleContextHolder.getLocale()), request.getStatus().name());
+            jsonArray.put(jsonRequest);
+        }
+        return jsonArray.toString();
     }
 }

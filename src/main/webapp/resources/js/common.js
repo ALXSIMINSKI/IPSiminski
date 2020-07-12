@@ -3,7 +3,7 @@ window.onscroll = function() {
 };
 
 function scrollFunction() {
-    var mybutton = document.getElementById("btnUp");
+    let mybutton = document.getElementById("btnUp");
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         mybutton.style.display = "block";
     } else {
@@ -50,10 +50,10 @@ function buildRequestsTable(table, jsonRequests) {
         }
         let button = document.createElement("button");
         button.addEventListener("click", function () {
-            reloadRequestsTable(element["id"]);
+            reloadRequestsTable(element["ID"]);
         });
         button.setAttribute('class', 'btn btn-danger');
-        button.appendChild(document.createTextNode('Button.close.request'));
+        button.appendChild(document.createTextNode('Close request'));
         row.appendChild(button);
     }
 }
