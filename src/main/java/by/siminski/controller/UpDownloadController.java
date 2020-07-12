@@ -2,6 +2,8 @@ package by.siminski.controller;
 
 import by.siminski.utils.MediaTypeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -31,6 +33,9 @@ public class UpDownloadController {
 
     @Autowired
     private ServletContext servletContext;
+
+    @Autowired
+    private MessageSource messageSource;
 
     @PostMapping("/upload/prices")
     public String uploadPrices(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
@@ -66,9 +71,9 @@ public class UpDownloadController {
         try {
             Path path = new ClassPathResource(DIRECTORY_TO_UP_DOWNLOAD + fileName).getFile().toPath();
             Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-            return "OK";
+            return messageSource.getMessage("Upload.status.ok", null, LocaleContextHolder.getLocale());
         } catch (IOException e) {
-            return "ERROR";
+            return messageSource.getMessage("Upload.status.failed", null, LocaleContextHolder.getLocale());
         }
     }
 

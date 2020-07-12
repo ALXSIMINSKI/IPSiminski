@@ -20,9 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigInteger;
-import java.util.LinkedHashMap;
-import java.util.Locale;
-import java.util.Map;
 
 @Controller
 public class NavigationController {
@@ -105,7 +102,7 @@ public class NavigationController {
         }
 
         orderRequestService.registerRequest(requestForm);
-        redirectAttributes.addFlashAttribute("result", "Your request has been submitted. I'll call you for conforming. :)");
+        redirectAttributes.addFlashAttribute("result", messageSource.getMessage("Successful.request.message", null, LocaleContextHolder.getLocale()));
         return "redirect:/make-request";
     }
 
