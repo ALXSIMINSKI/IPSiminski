@@ -28,7 +28,21 @@
         </nav>
         <!--FOOTER-->
         <footer th:fragment="footer">
-            <img src="/resources/img/ipsiminski.png" class="img-fluid" alt="">
+            <img th:src="@{/resources/img/ipsiminski.png}" class="img-fluid" alt="">
         </footer>
+        <!--SLIDESHOW-->
+        <div th:fragment="slideshow" class="slideshow-container">
+            <div class="mySlides">
+                <img class="slide-img" th:src="@{/resources/img/journals.png}">
+            </div>
+            <div class="mySlides">
+                <img class="slide-img" th:src="@{/resources/img/mountain.png}">
+            </div>
+            <div class="mySlides">
+                <img class="slide-img" th:src="@{/resources/img/road.png}">
+            </div>
+            <a class="prev" th:onclick="'moveSlides(-1)'">&#10094;</a>
+            <a class="next" th:onclick="'moveSlides(1)'">&#10095;</a>
+        </div>
     </body>
 </html>

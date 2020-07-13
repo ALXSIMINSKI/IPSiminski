@@ -56,3 +56,34 @@ function buildRequestsTable(table, jsonRequests) {
         row.appendChild(button);
     }
 }
+
+let slideIndex = 0;
+let slideTimeout;
+
+document.addEventListener('DOMContentLoaded', function(){
+    showSlides();
+});
+
+function moveSlides(difference) {
+    clearTimeout(slideTimeout);
+    if(difference === -1) {
+       slideIndex = slideIndex - 2;
+    }
+    showSlides();
+}
+
+function showSlides() {
+    let slides = document.getElementsByClassName("mySlides");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    if (slideIndex > slides.length - 1) {
+        slideIndex = 0;
+    }
+    if(slideIndex < 0) {
+        slideIndex = slides.length - 1;
+    }
+    slides[slideIndex].style.display = "inline";
+    slideIndex++;
+    slideTimeout = setTimeout(showSlides, 5000);
+}
