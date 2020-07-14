@@ -11,7 +11,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 @Service
-public class OrderRequestServiceImpl implements OrderRequestService{
+public class OrderRequestServiceImpl implements OrderRequestService {
 
     @Autowired
     private OrderRequestDao orderRequestDao;
