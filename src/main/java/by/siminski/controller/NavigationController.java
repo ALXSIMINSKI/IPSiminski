@@ -79,10 +79,9 @@ public class NavigationController {
 
     @GetMapping("/offerings")
     public String offerings(Model model) {
-//        String username = securityService.findLoggedInUsername();
-//        model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
-//        model.addAttribute("userName", username);
-        documentParseService.parse();
+        String username = securityService.findLoggedInUsername();
+        model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
+        model.addAttribute("userName", username);
         return "offerings";
     }
 
