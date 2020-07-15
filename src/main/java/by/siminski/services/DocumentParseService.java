@@ -29,15 +29,12 @@ public class DocumentParseService {
                 IBodyElement element = (IBodyElement) bodyElementIterator.next();
                 if ("TABLE".equalsIgnoreCase(element.getElementType().name())) {
                     XWPFTable table = (XWPFTable) element;
-//                    List<XWPFTable> tableList = element.getBody().getTables();
-//                    for (XWPFTable table : tableList) {
-                        System.out.println("Total Number of Rows of Table:" + table.getNumberOfRows());
-                        for (int i = 0; i < table.getRows().size(); i++) {
-                            for (int j = 0; j < table.getRow(i).getTableCells().size(); j++) {
-                                System.out.println(table.getRow(i).getCell(j).getText());
-                            }
+                    System.out.println(table.getRow(0).getCell(0).getText());
+                    for (int row = 1; row < table.getRows().size(); row++) {
+                        for (int cell = 0; cell < table.getRow(row).getTableCells().size(); cell++) {
+                            System.out.println(table.getRow(row).getCell(cell).getText());
                         }
-//                    }
+                    }
                 }
             }
         } catch (IOException | InvalidFormatException e) {

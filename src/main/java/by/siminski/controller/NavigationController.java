@@ -1,6 +1,7 @@
 package by.siminski.controller;
 
 import by.siminski.model.request.OrderRequest;
+import by.siminski.services.DocumentParseService;
 import by.siminski.services.OrderRequestService;
 import by.siminski.services.security.SecurityService;
 import by.siminski.validator.OrderRequestValidator;
@@ -36,6 +37,9 @@ public class NavigationController {
 
     @Autowired
     OrderRequestValidator orderRequestValidator;
+
+    @Autowired
+    DocumentParseService documentParseService;
 
     @Autowired
     MessageSource messageSource;
@@ -75,9 +79,10 @@ public class NavigationController {
 
     @GetMapping("/offerings")
     public String offerings(Model model) {
-        String username = securityService.findLoggedInUsername();
-        model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
-        model.addAttribute("userName", username);
+//        String username = securityService.findLoggedInUsername();
+//        model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
+//        model.addAttribute("userName", username);
+        documentParseService.parse();
         return "offerings";
     }
 
