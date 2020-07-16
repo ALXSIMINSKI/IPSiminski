@@ -47,6 +47,12 @@ footer > img {
     margin-left: -150px;
 }
 
+footer > a {
+    position: fixed;
+    bottom: 120px;
+    left: 1%;
+}
+
 .navbar {
     border-radius: unset;
     z-index:1;
@@ -193,16 +199,21 @@ footer > img {
     background-size: cover;
 }
 
+#btnUp:hover {
+    background-color: #d9534f;
+    border-radius: 50px;
+}
+
 .btn-req-cancel {
     background-color: transparent;
     border: none;
     background-image: url("/resources/img/close-request.png");
     background-size: cover;
-    width: 30px;
-    height: 30px;
+    width: 31px;
+    height: 31px;
 }
 .btn-req-cancel:hover {
-    background-color: #5cb85c;
+    background-color: #b85557;
     border-radius: 15px;
 }
 
@@ -249,4 +260,27 @@ footer > img {
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.8);
+}
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active, .collapsible:hover {
+    background-color: #555;
+}
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
 }

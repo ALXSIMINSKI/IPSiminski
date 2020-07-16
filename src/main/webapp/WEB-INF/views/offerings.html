@@ -14,12 +14,14 @@
 <body>
 <div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
 <div id="main">
-    <table th:each="element : ${catalogItemsMap}">
-        <th th:text="${element.key}"></th>
-        <tr th:each="catalogItem:${element.value}">
-            <td th:text="${catalogItem.name}"></td>
-        </tr>
-    </table>
+    <div th:each="element : ${catalogItemsMap}">
+        <button type="button" class="collapsible" th:text="${element.key}">Group name</button>
+        <table class="content">
+            <tr th:each="catalogItem:${element.value}">
+                <td th:text="${catalogItem.name}"></td>
+            </tr>
+        </table>
+    </div>
 <button onclick="topFunction()" id="btnUp"></button>
 </div>
 <div th:insert="~{fragments::footer}"></div>

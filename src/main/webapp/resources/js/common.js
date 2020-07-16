@@ -1,13 +1,14 @@
+//ARROW BUTTON SCROLL UP
 window.onscroll = function() {
     scrollFunction()
 };
 
 function scrollFunction() {
-    let mybutton = document.getElementById("btnUp");
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        mybutton.style.display = "block";
+    let buttonArrowUp = document.getElementById("btnUp");
+    if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+        buttonArrowUp.style.display = "block";
     } else {
-        mybutton.style.display = "none";
+        buttonArrowUp.style.display = "none";
     }
 }
 
@@ -16,6 +17,7 @@ function topFunction() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
+//BUILD REQUESTS TABLE
 function reloadRequestsTable(request_id) {
     let request = new XMLHttpRequest();
     let url = "close-request?id=" + request_id;
@@ -57,12 +59,29 @@ function buildRequestsTable(table, jsonRequests) {
     }
 }
 
-let slideIndex = 0;
-let slideTimeout;
-
+//WHEN DOCUMENT LOADED
 document.addEventListener('DOMContentLoaded', function(){
     showSlides();
+
+    let collapsibleItems = document.getElementsByClassName("collapsible");
+    collapsibleItems[0].classList.toggle("active");
+    collapsibleItems[0].nextElementSibling.style.display = "block";
+    for (let item = 0; item < collapsibleItems.length; item++) {
+        collapsibleItems[item].addEventListener("click", function() {
+            this.classList.toggle("active");
+            let content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
 });
+
+//SLIDER
+let slideIndex = 0;
+let slideTimeout;
 
 function moveSlides(difference) {
     clearTimeout(slideTimeout);
@@ -83,7 +102,9 @@ function showSlides() {
     if(slideIndex < 0) {
         slideIndex = slides.length - 1;
     }
-    slides[slideIndex].style.display = "inline";
+    if(slides[slideIndex] != null) {
+        slides[slideIndex].style.display = "inline";
+    }
     slideIndex++;
     slideTimeout = setTimeout(showSlides, 5000);
 }
