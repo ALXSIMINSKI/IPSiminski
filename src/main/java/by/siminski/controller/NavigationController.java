@@ -1,6 +1,8 @@
 package by.siminski.controller;
 
+import by.siminski.model.catalog.CatalogItem;
 import by.siminski.model.request.OrderRequest;
+import by.siminski.services.CatalogItemService;
 import by.siminski.services.DocumentParseService;
 import by.siminski.services.OrderRequestService;
 import by.siminski.services.security.SecurityService;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigInteger;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class NavigationController {
@@ -43,6 +47,9 @@ public class NavigationController {
 
     @Autowired
     MessageSource messageSource;
+
+    @Autowired
+    CatalogItemService catalogItemService;
 
     @GetMapping({"/", "/welcome"})
     public String welcome(Model model) {
@@ -82,6 +89,9 @@ public class NavigationController {
         String username = securityService.findLoggedInUsername();
         model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
         model.addAttribute("userName", username);
+
+        Map<String, List<CatalogItem>> catalogItemsMap = catalogItemService.getAllCatalogItemsMap();
+        model.addAttribute("catalogItemsMap", catalogItemsMap);
         return "offerings";
     }
 

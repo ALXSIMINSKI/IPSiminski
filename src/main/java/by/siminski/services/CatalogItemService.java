@@ -3,6 +3,7 @@ package by.siminski.services;
 import by.siminski.model.catalog.CatalogItem;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CatalogItemService {
 
@@ -11,4 +12,6 @@ public interface CatalogItemService {
     CatalogItem getCatalogItemByName(String name);
 
     List<CatalogItem> getCatalogItemsByGroupName(String groupName);
+
+    Map<String, List<CatalogItem>>  getAllCatalogItemsMap();
 }
