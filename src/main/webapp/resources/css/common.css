@@ -183,8 +183,8 @@ footer > img {
     position: fixed; /* Fixed/sticky position */
     bottom: 100px; /* Place the button at the bottom of the page */
     right: 50px; /* Place the button 30px from the right */
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     cursor: pointer; /* Add a mouse pointer on hover */
