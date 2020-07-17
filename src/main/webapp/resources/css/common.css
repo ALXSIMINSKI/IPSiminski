@@ -272,6 +272,19 @@ footer > a {
     text-align: left;
     outline: none;
     font-size: 15px;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-image: url("/resources/img/plus.png");
+}
+
+.search-input {
+    margin-bottom: 1%;
+    margin-top: 1%;
+    width: 100%;
+    background-image: url("/resources/img/search-icon.png");
+    background-size: 46px;
+    background-repeat: no-repeat;
+    background-position: right;
 }
 
 .active, .collapsible:hover {

@@ -14,7 +14,9 @@
 <body>
 <div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
 <div id="main">
-    <div th:each="element : ${catalogItemsMap}">
+    <input class="input-lg search-input" id="catalog-search" type="text" th:placeholder="#{Offerings.search}"/>
+    <table id="catalog-search-table"></table>
+    <div th:each="element:${catalogItemsMap}">
         <button type="button" class="collapsible" th:text="${element.key}">Group name</button>
         <table class="content">
             <tr th:each="catalogItem:${element.value}">

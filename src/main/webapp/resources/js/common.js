@@ -66,14 +66,17 @@ document.addEventListener('DOMContentLoaded', function(){
     let collapsibleItems = document.getElementsByClassName("collapsible");
     collapsibleItems[0].classList.toggle("active");
     collapsibleItems[0].nextElementSibling.style.display = "block";
+    collapsibleItems[0].style.backgroundImage = "url('/resources/img/minus.png')";
     for (let item = 0; item < collapsibleItems.length; item++) {
         collapsibleItems[item].addEventListener("click", function() {
             this.classList.toggle("active");
             let content = this.nextElementSibling;
             if (content.style.display === "block") {
                 content.style.display = "none";
+                this.style.backgroundImage = "url('/resources/img/plus.png')";
             } else {
                 content.style.display = "block";
+                this.style.backgroundImage = "url('/resources/img/minus.png')";
             }
         });
     }
@@ -107,4 +110,41 @@ function showSlides() {
     }
     slideIndex++;
     slideTimeout = setTimeout(showSlides, 5000);
+}
+
+//CATALOG SEARCH
+document.getElementById("catalog-search").addEventListener("keyup", function () {
+   let text = this.getText();
+   let request = new XMLHttpRequest();
+   let url = "catalog-search?text=" + text;
+   request.open('GET', url);
+   request.addEventListener("readystatechange", function() {
+       if (request.readyState === 4 && request.status === 200) {
+           let table = document.getElementById("catalog-search-table");
+           table.innerHTML = '';
+           let foundCatalogItems = JSON.parse(request.responseText);
+           buildCatalogSearchTable(table, foundCatalogItems);
+       }
+   });
+   request.send();
+});
+
+function buildCatalogSearchTable(table, jsonRequests) {
+    // let thead = table.createTHead();
+    // let row = thead.insertRow();
+    // for(let key of Object.keys(jsonRequests[0])) {
+    //     let th = document.createElement("th");
+    //     let headerText = document.createTextNode(key);
+    //     th.appendChild(headerText);
+    //     row.appendChild(th);
+    // }
+    // let tbody = table.createTBody();
+    // for(let element of jsonRequests) {
+    //     let row = tbody.insertRow();
+    //     for(let key of Object.keys(element)) {
+    //         let cell = row.insertCell();
+    //         let text = document.createTextNode(element[key]);
+    //         cell.appendChild(text);
+    //     }
+    // }
 }

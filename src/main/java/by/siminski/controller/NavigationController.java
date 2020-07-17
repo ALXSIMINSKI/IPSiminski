@@ -23,8 +23,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class NavigationController {
@@ -134,6 +137,24 @@ public class NavigationController {
             jsonRequest.put(messageSource.getMessage("Table.requests.header.description", null, LocaleContextHolder.getLocale()), request.getDescription());
             jsonRequest.put(messageSource.getMessage("Table.requests.header.status", null, LocaleContextHolder.getLocale()), request.getStatus().name());
             jsonArray.put(jsonRequest);
+        }
+        return jsonArray.toString();
+    }
+
+    @GetMapping("/catalog-search")
+    public @ResponseBody String closeRequest(@RequestParam(name = "text") String text) {
+        JSONArray jsonArray = new JSONArray();
+        List<CatalogItem> catalogItems = catalogItemService.getAllCatalogItemsMap().values().stream().flatMap(Collection::stream).collect(Collectors.toList());
+        for (CatalogItem catalogItem : catalogItems) {
+//            JSONObject jsonRequest = new JSONObject();
+//            jsonRequest.put(messageSource.getMessage("Table.requests.header.id", null, LocaleContextHolder.getLocale()), request.getId().toString());
+//            jsonRequest.put(messageSource.getMessage("Table.requests.header.username", null, LocaleContextHolder.getLocale()), request.getUsername());
+//            jsonRequest.put(messageSource.getMessage("Table.requests.header.organization", null, LocaleContextHolder.getLocale()), request.getOrganization());
+//            jsonRequest.put(messageSource.getMessage("Table.requests.header.phone", null, LocaleContextHolder.getLocale()), request.getPhone());
+//            jsonRequest.put(messageSource.getMessage("Table.requests.header.email", null, LocaleContextHolder.getLocale()), request.getEmail());
+//            jsonRequest.put(messageSource.getMessage("Table.requests.header.description", null, LocaleContextHolder.getLocale()), request.getDescription());
+//            jsonRequest.put(messageSource.getMessage("Table.requests.header.status", null, LocaleContextHolder.getLocale()), request.getStatus().name());
+//            jsonArray.put(jsonRequest);
         }
         return jsonArray.toString();
     }
