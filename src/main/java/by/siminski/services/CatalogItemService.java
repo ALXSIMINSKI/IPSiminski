@@ -7,6 +7,8 @@ import java.util.Map;
 
 public interface CatalogItemService {
 
+    void clearCatalog();
+
     void addCatalogItem(CatalogItem catalogItem);
 
     CatalogItem getCatalogItemByName(String name);

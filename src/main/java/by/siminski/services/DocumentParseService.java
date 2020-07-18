@@ -30,6 +30,9 @@ public class DocumentParseService {
             FileInputStream fileInputStream = new FileInputStream(path.toString());
             XWPFDocument document = new XWPFDocument(OPCPackage.open(fileInputStream));
             Iterator bodyElementIterator = document.getBodyElementsIterator();
+            if(bodyElementIterator.hasNext()) {
+                catalogItemService.clearCatalog();
+            }
             while (bodyElementIterator.hasNext()) {
                 IBodyElement element = (IBodyElement) bodyElementIterator.next();
                 if ("TABLE".equalsIgnoreCase(element.getElementType().name())) {

@@ -5,6 +5,8 @@ import by.siminski.model.request.OrderRequest;
 import by.siminski.model.request.Request;
 import by.siminski.model.request.RequestStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -17,11 +19,13 @@ public class OrderRequestServiceImpl implements OrderRequestService {
     private OrderRequestDao orderRequestDao;
 
     @Override
+    @Cacheable(value = "requestsCache")
     public List<OrderRequest> getAllRequests() {
         return orderRequestDao.findAll();
     }
 
     @Override
+    @CacheEvict(value = "requestsCache", allEntries = true)
     public void registerRequest(Request request) {
         if(request instanceof OrderRequest) {
             ((OrderRequest) request).setStatus(RequestStatus.NEW);
@@ -30,6 +34,7 @@ public class OrderRequestServiceImpl implements OrderRequestService {
     }
 
     @Override
+    @CacheEvict(value = "requestsCache", allEntries = true)
     public void closeRequest(BigInteger requestIdToClose) {
         OrderRequest orderRequest = orderRequestDao.getOne(requestIdToClose);
         orderRequest.setStatus(RequestStatus.CLOSED);
