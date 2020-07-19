@@ -367,9 +367,7 @@ footer > a {
 }
 
 #requestsTable > tbody > tr > td {
-    border-right: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-    border-top: 1px solid #000000;
+    border: 1px solid #000000;
     word-wrap: break-word;
     overflow-wrap: break-word;
     max-width: 10px;
@@ -385,5 +383,6 @@ th {
 
 .close-request-column {
     border-right: none!important;
+    border-bottom: none!important;
 }
 
