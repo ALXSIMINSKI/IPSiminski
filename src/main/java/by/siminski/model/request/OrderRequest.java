@@ -25,7 +25,7 @@ public class OrderRequest implements Request {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "text")
     private String description;
 
     @Column(name = "status")

@@ -123,41 +123,4 @@ public class NavigationController {
         redirectAttributes.addFlashAttribute("result", messageSource.getMessage("Successful.request.message", null, LocaleContextHolder.getLocale()));
         return "redirect:/make-request";
     }
-
-    @GetMapping("/close-request")
-    public @ResponseBody String closeRequest(@RequestParam(name = "id") BigInteger requestIdToClose) {
-        orderRequestService.closeRequest(requestIdToClose);
-        JSONArray jsonArray = new JSONArray();
-        for (OrderRequest request : orderRequestService.getAllRequests()) {
-            JSONObject jsonRequest = new JSONObject();
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.id", null, LocaleContextHolder.getLocale()), request.getId().toString());
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.username", null, LocaleContextHolder.getLocale()), request.getUsername());
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.organization", null, LocaleContextHolder.getLocale()), request.getOrganization());
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.phone", null, LocaleContextHolder.getLocale()), request.getPhone());
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.email", null, LocaleContextHolder.getLocale()), request.getEmail());
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.description", null, LocaleContextHolder.getLocale()), request.getDescription());
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.status", null, LocaleContextHolder.getLocale()), request.getStatus().name());
-            jsonArray.put(jsonRequest);
-        }
-        return jsonArray.toString();
-    }
-
-    @GetMapping("/catalog-search")
-    public @ResponseBody String closeRequest(@RequestParam(name = "text") String text) {
-        if(StringUtils.isEmpty(text)) {
-            return new JSONArray().toString();
-        }
-        JSONArray jsonArray = new JSONArray();
-        List<CatalogItem> catalogItems = catalogItemService.getAllCatalogItemsMap().values().stream()
-                .flatMap(Collection::stream)
-                .filter(catalogItem -> catalogItem.getName().toLowerCase().contains(text.toLowerCase()))
-                .collect(Collectors.toList());
-        for (CatalogItem catalogItem : catalogItems) {
-            JSONObject jsonRequest = new JSONObject();
-            jsonRequest.put(messageSource.getMessage("Offerings.search.header.name", null, LocaleContextHolder.getLocale()), catalogItem.getName());
-            jsonRequest.put(messageSource.getMessage("Offerings.search.header.group", null, LocaleContextHolder.getLocale()), catalogItem.getGroupName());
-            jsonArray.put(jsonRequest);
-        }
-        return jsonArray.toString();
-    }
 }

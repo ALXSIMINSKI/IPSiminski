@@ -39,13 +39,13 @@ public class UpDownloadController {
 
     @PostMapping("/upload/prices")
     public String uploadPrices(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("p_status", uploadFile(file, DEFAULT_PRICE_LIST_FILE_NAME));
+        redirectAttributes.addFlashAttribute("upload_prices_status", uploadFile(file, DEFAULT_PRICE_LIST_FILE_NAME));
         return "redirect:/settings";
     }
 
     @PostMapping("/upload/agreement")
     public String uploadAgreement(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("a_status", uploadFile(file, DEFAULT_AGREEMENT_FILE_NAME));
+        redirectAttributes.addFlashAttribute("upload_agreement_status", uploadFile(file, DEFAULT_AGREEMENT_FILE_NAME));
         return "redirect:/settings";
     }
 
@@ -71,9 +71,9 @@ public class UpDownloadController {
         try {
             Path path = new ClassPathResource(DIRECTORY_TO_UP_DOWNLOAD + fileName).getFile().toPath();
             Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-            return messageSource.getMessage("Upload.status.ok", null, LocaleContextHolder.getLocale());
+            return messageSource.getMessage("Status.ok", null, LocaleContextHolder.getLocale());
         } catch (IOException e) {
-            return messageSource.getMessage("Upload.status.failed", null, LocaleContextHolder.getLocale());
+            return messageSource.getMessage("Status.failed", null, LocaleContextHolder.getLocale());
         }
     }
 

@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/registration").not().fullyAuthenticated()
-                .antMatchers("/settings/**", "/requests/**").hasRole("ADMIN")
+                .antMatchers("/settings/**", "/requests/**", "/upload/**, /catalog/**").hasRole("ADMIN")
                 .antMatchers("/resources/**").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/welcome", true)

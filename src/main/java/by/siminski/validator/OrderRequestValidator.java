@@ -35,5 +35,8 @@ public class OrderRequestValidator implements Validator {
         if (orderRequest.getDescription().length() < 10 || orderRequest.getDescription().length() > 500) {
             errors.rejectValue("description", "Size.requestForm.description");
         }
+//        if (orderRequest.getEmail()) {
+//            errors.rejectValue("description", "Size.requestForm.description");
+//        }
     }
 }

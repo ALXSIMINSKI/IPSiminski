@@ -7,6 +7,9 @@ import org.apache.poi.xwpf.usermodel.IBodyElement;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContext;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +24,13 @@ public class DocumentParseService {
     @Autowired
     CatalogItemService catalogItemService;
 
+    @Autowired
+    MessageSource messageSource;
+
     private static final String DEFAULT_CATALOG_FILE_NAME = "catalog.docx";
     private static final String DIRECTORY_TO_UP_DOWNLOAD = "/download/";
 
-    public void parseCatalog() {
+    public String parseCatalog() {
         try {
             Path path = new ClassPathResource(DIRECTORY_TO_UP_DOWNLOAD + DEFAULT_CATALOG_FILE_NAME).getFile().toPath();
             FileInputStream fileInputStream = new FileInputStream(path.toString());
@@ -47,6 +53,8 @@ public class DocumentParseService {
             }
         } catch (IOException | InvalidFormatException e) {
             e.printStackTrace();
+            return messageSource.getMessage("Status.failed", null, LocaleContextHolder.getLocale());
         }
+        return messageSource.getMessage("Status.ok", null, LocaleContextHolder.getLocale());
     }
 }

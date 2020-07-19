@@ -19,7 +19,7 @@
         <form enctype="multipart/form-data" th:action="@{/upload/prices}" th:method="POST">
             <input name="file" type="file">
             <button type="submit" th:text="#{Settings.upload.upload}">Submit</button>
-            <span th:text="${p_status}"></span>
+            <span th:text="${upload_prices_status}"></span>
         </form>
     </div>
     <hr class="zag">
@@ -28,7 +28,15 @@
         <form enctype="multipart/form-data" th:action="@{/upload/agreement}" th:method="POST">
             <input name="file" type="file">
             <button type="submit" th:text="#{Settings.upload.upload}">Submit</button>
-            <span th:text="${a_status}"></span>
+            <span th:text="${upload_agreement_status}"></span>
+        </form>
+    </div>
+    <hr class="zag">
+    <h1 class="text-center" th:text="#{Settings.parse.catalog}"></h1>
+    <div class="setting-form">
+        <form th:action="@{/catalog/parse}" th:method="POST">
+            <button type="submit" th:text="#{Settings.parse.catalog}">Submit</button>
+            <span th:text="${parse_catalog_status}"></span>
         </form>
     </div>
     <hr class="zag">
