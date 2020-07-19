@@ -39,7 +39,7 @@ public class UpDownloadController {
 
     @PostMapping("/upload/prices")
     public String uploadPrices(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("p_status",uploadFile(file, DEFAULT_PRICE_LIST_FILE_NAME));
+        redirectAttributes.addFlashAttribute("p_status", uploadFile(file, DEFAULT_PRICE_LIST_FILE_NAME));
         return "redirect:/settings";
     }
 

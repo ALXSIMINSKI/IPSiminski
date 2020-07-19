@@ -8,7 +8,7 @@ body{
     (so that negative margins work as you expect) */
     position:relative;
     z-index:0;
-    color: #5e5b64;
+    color: #000000;
 }
 
 #main {
@@ -18,14 +18,14 @@ body{
     background-color: #fff;
     box-shadow: 0 10px 5px rgba(0,0,0,0.25);
     background-image: url("/resources/img/background.png");
-    background-size: cover;
+    background-repeat: repeat;
 }
 
 footer {
     position: sticky;
     bottom: 0;
     left: 0;
-    height: 200px;
+    height: 250px;
     width: 100%;
     background: #212529;
     display: grid;
@@ -44,7 +44,7 @@ footer > img {
     position: fixed;
     bottom: 60px;
     left: 50%;
-    margin-left: -150px;
+    margin-left: -125px;
 }
 
 footer > a {
@@ -222,7 +222,7 @@ footer > a {
     height: 20%;
     position: relative;
     margin: auto;
-    padding-top: 50px;
+    padding-top: 25px;
 }
 
 .mySlides {
@@ -291,6 +291,12 @@ footer > a {
     background-color: #555;
 }
 
+.logo-footer {
+    height: 250px;
+    width: 250px;
+    bottom: 0;
+}
+
 .content {
     padding: 0 18px;
     display: none;
@@ -298,6 +304,40 @@ footer > a {
     background-color: #f1f1f1;
 }
 
-.catalog-search-table {
-    padding: 0 18px;
+.contacts-second {
+    display: block;
+    text-align: left;
+    padding-left: 10%;
+    margin-bottom: 1%;
+    font-size: x-large;
+    font-family: Impact, Charcoal, sans-serif;
+}
+
+.contacts-main {
+    font-family: American Typewriter, serif;
+    font-size: 4vw;
+}
+
+.welcome-header {
+    font-family: American Typewriter, serif;
+    font-size: 4vw;
+    text-align: center;
+}
+
+.contact-img {
+    margin-right: 2%;
+}
+
+.header-subinfo {
+    margin-top: 0;
+    text-align: center;
+}
+
+#catalog-search-table {
+    background: #8cb891;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+
+.content, .collapsible {
+    font-family: "Arial Black", Gadget, sans-serif;
 }

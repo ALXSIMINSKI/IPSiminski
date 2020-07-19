@@ -13,8 +13,27 @@
 </head>
 <body>
 <div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
-<div id="main">
-
+<div id="main" class="text-center">
+    <div class="contacts-main">
+        <span th:text="#{Contacts.general.info}"></span>
+    </div>
+    <div class="contacts-second">
+        <img src="/resources/img/a1.png">
+        <img class="contact-img" src="/resources/img/viber.png">
+        <span th:text="#{Contacts.mob.phone}"></span>
+    </div>
+    <div class="contacts-second">
+        <img class="contact-img" src="/resources/img/phone.png">
+        <span th:text="#{Contacts.phone}"></span>
+    </div>
+    <div class="contacts-second">
+        <img class="contact-img" src="/resources/img/unp.png">
+        <span th:text="#{Contacts.unp}"></span>
+    </div>
+    <div class="contacts-second">
+        <img class="contact-img" src="/resources/img/schedule.png">
+        <span th:text="#{Contacts.work.schedule}"></span>
+    </div>
 <button onclick="topFunction()" id="btnUp"></button>
 </div>
 <div th:insert="~{fragments::footer}"></div>
