@@ -336,6 +336,7 @@ footer > a {
 #catalog-search-table {
     background: #8cb891;
     font-family: "Arial Black", Gadget, sans-serif;
+    width: 100%;
 }
 
 .content, .collapsible {
