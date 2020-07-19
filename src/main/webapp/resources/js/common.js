@@ -34,30 +34,32 @@ function reloadRequestsTable(request_id) {
 }
 
 function buildRequestsTable(table, jsonRequests) {
-    let thead = table.createTHead();
-    let row = thead.insertRow();
-    for(let key of Object.keys(jsonRequests[0])) {
-        let th = document.createElement("th");
-        let headerText = document.createTextNode(key);
-        th.appendChild(headerText);
-        row.appendChild(th);
-    }
-    let tbody = table.createTBody();
-    for(let element of jsonRequests) {
-        let row = tbody.insertRow();
-        for(let key of Object.keys(element)) {
-            let cell = row.insertCell();
-            let text = document.createTextNode(element[key]);
-            cell.appendChild(text);
+    if(jsonRequests.length !== 0) {
+        let thead = table.createTHead();
+        let row = thead.insertRow();
+        for (let key of Object.keys(jsonRequests[0])) {
+            let th = document.createElement("th");
+            let headerText = document.createTextNode(key);
+            th.appendChild(headerText);
+            row.appendChild(th);
         }
-        let button = document.createElement("button");
-        let cell = row.insertCell();
-        button.addEventListener("click", function () {
-            reloadRequestsTable(element["ID"]);
-        });
-        button.setAttribute('class', 'btn-req-cancel');
-        cell.setAttribute('class', 'close-request-column');
-        cell.appendChild(button);
+        let tbody = table.createTBody();
+        for (let element of jsonRequests) {
+            let row = tbody.insertRow();
+            for (let key of Object.keys(element)) {
+                let cell = row.insertCell();
+                let text = document.createTextNode(element[key]);
+                cell.appendChild(text);
+            }
+            let button = document.createElement("button");
+            let cell = row.insertCell();
+            button.addEventListener("click", function () {
+                reloadRequestsTable(element["ID"]);
+            });
+            button.setAttribute('class', 'btn-req-cancel');
+            cell.setAttribute('class', 'close-request-column');
+            cell.appendChild(button);
+        }
     }
 }
 
@@ -136,21 +138,23 @@ function showSlides() {
 
 //CATALOG SEARCH
 function buildCatalogSearchTable(table, jsonResponse) {
-    let thead = table.createTHead();
-    let row = thead.insertRow();
-    for(let key of Object.keys(jsonResponse[0])) {
-        let th = document.createElement("th");
-        let headerText = document.createTextNode(key);
-        th.appendChild(headerText);
-        row.appendChild(th);
-    }
-    let tbody = table.createTBody();
-    for(let element of jsonResponse) {
-        let row = tbody.insertRow();
-        for(let key of Object.keys(element)) {
-            let cell = row.insertCell();
-            let text = document.createTextNode(element[key]);
-            cell.appendChild(text);
+    if(jsonResponse.length !== 0) {
+        let thead = table.createTHead();
+        let row = thead.insertRow();
+        for(let key of Object.keys(jsonResponse[0])) {
+            let th = document.createElement("th");
+            let headerText = document.createTextNode(key);
+            th.appendChild(headerText);
+            row.appendChild(th);
+        }
+        let tbody = table.createTBody();
+        for(let element of jsonResponse) {
+            let row = tbody.insertRow();
+            for(let key of Object.keys(element)) {
+                let cell = row.insertCell();
+                let text = document.createTextNode(element[key]);
+                cell.appendChild(text);
+            }
         }
     }
 }
