@@ -14,8 +14,9 @@
 <body>
 <div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
 <div id="main">
-    <div class="text-center pt-100">
+    <div class="text-center pt-50">
         <table id="requestsTable">
+            <thead>
             <tr>
                 <th th:text="#{Table.requests.header.organization}">ORGANIZATION</th>
                 <th th:text="#{Table.requests.header.status}">STATUS</th>
@@ -25,6 +26,8 @@
                 <th th:text="#{Table.requests.header.id}">ID</th>
                 <th th:text="#{Table.requests.header.email}">EMAIL</th>
             </tr>
+            </thead>
+            <tbody>
             <tr th:each="requestItem:${allRequests}">
                 <td th:text="${requestItem.organization}">ORGANIZATION</td>
                 <td th:text="${requestItem.status}">STATUS</td>
@@ -33,10 +36,11 @@
                 <td th:text="${requestItem.username}">USERNAME</td>
                 <td th:text="${requestItem.id}">ID</td>
                 <td th:text="${requestItem.email}">EMAIL</td>
-                <td>
+                <td class="close-request-column">
                     <button th:onclick="'reloadRequestsTable('+${requestItem.id}+');'" class="btn-req-cancel"></button>
                 </td>
             </tr>
+            </tbody>
         </table>
     </div>
     <button onclick="topFunction()" id="btnUp"></button>

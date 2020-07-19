@@ -51,11 +51,13 @@ function buildRequestsTable(table, jsonRequests) {
             cell.appendChild(text);
         }
         let button = document.createElement("button");
+        let cell = row.insertCell();
         button.addEventListener("click", function () {
             reloadRequestsTable(element["ID"]);
         });
         button.setAttribute('class', 'btn-req-cancel');
-        row.appendChild(button);
+        cell.setAttribute('class', 'close-request-column');
+        cell.appendChild(button);
     }
 }
 

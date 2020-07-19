@@ -180,6 +180,11 @@ footer > a {
     padding-top: 100px;
 }
 
+.pt-50 {
+    padding-top: 50px;
+}
+
+
 .link-text {
     font-size: large;
 }
@@ -342,3 +347,27 @@ footer > a {
 .content, .collapsible {
     font-family: "Arial Black", Gadget, sans-serif;
 }
+
+#requestsTable {
+    width: 100%;
+    border-bottom: 1px solid #000000;
+}
+
+#requestsTable > tbody > tr > td {
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-top: 1px solid #000000;
+}
+
+#requestsTable > tbody > tr:hover {
+    background-color: rgba(140, 184, 145, 0.45);
+}
+
+th {
+    text-align: center;
+}
+
+.close-request-column {
+    border-right: none!important;
+}
+
