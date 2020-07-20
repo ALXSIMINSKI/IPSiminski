@@ -158,3 +158,11 @@ function buildCatalogSearchTable(table, jsonResponse) {
         }
     }
 }
+
+//SPINNER
+// let intervalId = window.setInterval(function() {
+//     if (document.getElementsByTagName('body')[0] !== undefined) {
+//         window.clearInterval(intervalId);
+//         document.getElementById("loading").style.display = 'none';
+//     }
+// }, 1000);
