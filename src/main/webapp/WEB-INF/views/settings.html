@@ -14,33 +14,33 @@
 <body>
 <div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
 <div id="main">
-    <h1 class="text-center first-header" th:text="#{Settings.upload.pl}"></h1>
+    <h1 class="settings-header" th:text="#{Settings.upload.pl}"></h1>
     <div class="setting-form">
         <form enctype="multipart/form-data" th:action="@{/upload/prices}" th:method="POST">
             <input name="file" type="file">
-            <button type="submit" th:text="#{Settings.upload.upload}">Submit</button>
+            <button class="btn btn-dark" type="submit" th:text="#{Settings.upload.upload}">Submit</button>
             <span th:text="${upload_prices_status}"></span>
         </form>
     </div>
     <hr class="zag">
-    <h1 class="text-center" th:text="#{Settings.upload.agreement}"></h1>
+    <h1 class="settings-header" th:text="#{Settings.upload.agreement}"></h1>
     <div class="setting-form">
         <form enctype="multipart/form-data" th:action="@{/upload/agreement}" th:method="POST">
             <input name="file" type="file">
-            <button type="submit" th:text="#{Settings.upload.upload}">Submit</button>
+            <button class="btn btn-dark" type="submit" th:text="#{Settings.upload.upload}">Submit</button>
             <span th:text="${upload_agreement_status}"></span>
         </form>
     </div>
     <hr class="zag">
-    <h1 class="text-center" th:text="#{Settings.parse.catalog}"></h1>
+    <h1 class="settings-header" th:text="#{Settings.parse.catalog}"></h1>
     <div class="setting-form">
         <form th:action="@{/catalog/parse}" th:method="POST">
-            <button type="submit" th:text="#{Settings.parse.catalog}">Submit</button>
+            <button class="btn btn-dark" type="submit" th:text="#{Settings.parse.catalog}">Submit</button>
             <span th:text="${parse_catalog_status}"></span>
         </form>
     </div>
     <hr class="zag">
-    <h1 class="text-center" th:text="#{Settings.upload.another}"></h1>
+    <h1 class="settings-header" th:text="#{Settings.upload.another}"></h1>
     <button onclick="topFunction()" id="btnUp"></button>
 </div>
 <div th:insert="~{fragments::footer}"></div>

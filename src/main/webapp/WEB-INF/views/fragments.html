@@ -10,13 +10,15 @@
             <a class="navbar-link-custom" th:href="@{/contacts}">[[#{Navigation.contacts}]]</a>
             <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-admin-settings" th:href="@{/settings}">[[#{Navigation.settings}]]</a>
             <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-admin-settings" th:href="@{/requests}">[[#{Navigation.requests}]]</a>
+            <div>
             <form class="navbar-form" th:action="@{/download/pl}" method="GET">
                 <button class="btn btn-download" type="submit">[[#{Download.pricelist}]]</button>
             </form>
             <form class="navbar-form" th:action="@{/download/agreement}" method="GET">
                 <button class="btn btn-download" type="submit">[[#{Download.agreement}]]</button>
             </form>
-            <div class="navbar-form-login-logout">
+            </div>
+            <div>
                 <span th:unless="${isAnon}" th:text="${userName}">Hello</span>
                 <form th:if="${isAnon}" class="navbar-form" th:action="@{/login}" method="GET">
                     <button class="btn btn-login" type="submit">[[#{Nav.button.login}]]</button>

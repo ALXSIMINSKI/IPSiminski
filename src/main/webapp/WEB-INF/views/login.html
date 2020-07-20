@@ -19,16 +19,16 @@
             <span class="error-label mb-5" th:if="${badCredentials}" th:text="#{Login.failed.bad.credentials}">Login failed</span>
             <span class="error-label mb-5" th:if="${loginFailed}" th:text="#{Login.failed}">Login failed</span>
             <div>
-                <input class="mb-5 input-lg w-300" name="username" th:field="*{username}" type="text" th:placeholder="#{Field.username}" autofocus="true"/>
+                <input class="input-group-text mb-2 w-300" name="username" th:field="*{username}" type="text" th:placeholder="#{Field.username}" autofocus/>
             </div>
             <div>
-                <input class="mb-5 input-lg w-300" name="password" th:field="*{password}" type="password" th:placeholder="#{Field.password}"/>
+                <input class="input-group-text mb-2 w-300" name="password" th:field="*{password}" type="password" th:placeholder="#{Field.password}"/>
             </div>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <button class="btn btn-success mb-5 btn-lg w-300" type="submit">[[#{Button.login}]]</button>
+            <button class="btn btn-success custom-signUPIN-button mb-2 w-300" type="submit">[[#{Button.login}]]</button>
         </form>
         <form method="GET" th:action="@{/registration}">
-            <button class="btn btn-success mb-5 btn-lg w-300" type="submit">[[#{Registration.link}]]</button>
+            <button class="btn btn-success custom-signUPIN-button mb-2 w-300" type="submit">[[#{Registration.link}]]</button>
         </form>
     </div>
 </div>

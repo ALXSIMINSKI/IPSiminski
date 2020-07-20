@@ -17,19 +17,19 @@
         <form method="POST" th:object="${userForm}" th:action="@{/registration}">
             <h1>[[#{Registration.header}]]</h1>
             <div>
-                <input class="mb-5 input-lg w-300" type="text" th:field="*{username}" th:placeholder="#{Field.username}" autofocus="true"/>
+                <input class="input-group-text mb-2 w-300" type="text" th:field="*{username}" th:placeholder="#{Field.username}" autofocus/>
             </div>
             <span class="error-label mb-5" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error with data entered</span>
             <div>
-                <input class="mb-5 input-lg w-300" type="password" th:field="*{password}" th:placeholder="#{Field.password}"/>
+                <input class="input-group-text mb-2 w-300" type="password" th:field="*{password}" th:placeholder="#{Field.password}"/>
             </div>
             <span class="error-label mb-5" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error with data entered</span>
             <div>
-                <input class="mb-5 input-lg w-300" type="password" th:field="*{confirmPassword}" th:placeholder="#{Field.confirm.password}"/>
+                <input class="input-group-text mb-2 w-300" type="password" th:field="*{confirmPassword}" th:placeholder="#{Field.confirm.password}"/>
             </div>
             <span class="error-label mb-5" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Error with data entered</span>
             <br>
-            <button class="btn btn-success mb-5 btn-lg w-300" type="submit" value="Submit">[[#{Registration.button}]]</button>
+            <button class="btn btn-success custom-signUPIN-button mb-5 w-300" type="submit" value="Submit">[[#{Registration.button}]]</button>
         </form>
     </div>
 </div>

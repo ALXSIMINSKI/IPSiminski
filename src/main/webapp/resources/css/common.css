@@ -120,9 +120,6 @@ footer > a {
 
 .navbar-link-custom {
     border-radius: 5px;
-    height: 50px;
-    padding: 10px 50px;
-    font-size: 15px;
 }
 
 .error-label {
@@ -146,9 +143,6 @@ footer > a {
 .nav-admin-settings {
     color: #ffef6b;
     border-radius: 5px;
-    height: 50px;
-    padding: 10px 50px;
-    font-size: 15px;
 }
 
 .nav-admin-settings:hover {
@@ -168,8 +162,8 @@ footer > a {
     background-size: 10px 10px;
 }
 
-.first-header {
-    margin-top: 0;
+.settings-header {
+    margin-left: 2.5%;
 }
 
 .setting-form {
@@ -286,6 +280,8 @@ footer > a {
     margin-bottom: 1%;
     margin-top: 1%;
     width: 100%;
+    height: 64px;
+    font-size: 32px;
     background-image: url("/resources/img/search-icon.png");
     background-size: 46px;
     background-repeat: no-repeat;
@@ -384,5 +380,18 @@ th {
 .close-request-column {
     border-right: none!important;
     border-bottom: none!important;
+}
+
+.input-group-text {
+    display: inline;
+}
+
+.custom-signUPIN-button {
+    background-color: #0f6674;
+    border-color: unset;
+}
+
+.custom-signUPIN-button:hover {
+    background-color: #5cb85c;
 }
 
