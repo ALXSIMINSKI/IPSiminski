@@ -395,6 +395,25 @@ th {
     background-color: #5cb85c;
 }
 
+.contacts-main-block {
+    display: flex;
+}
+
+.contacts-left-section {
+    width: 20%;
+    display: inline;
+}
+
+.contacts-center-section {
+    width: 60%;
+    display: inline
+}
+
+.contacts-right-section {
+    width: 20%;
+    display: inline;
+}
+
 /*#loading {*/
     /*display: block;*/
     /*position: absolute;*/
