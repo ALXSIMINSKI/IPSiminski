@@ -43,15 +43,15 @@ public class AjaxRequestsController {
         orderRequestService.closeRequest(requestIdToClose);
         JSONArray jsonArray = new JSONArray();
         for (OrderRequest request : orderRequestService.getAllRequests()) {
-            JSONObject jsonRequest = new JSONObject();
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.id", null, LocaleContextHolder.getLocale()), request.getId().toString());
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.username", null, LocaleContextHolder.getLocale()), request.getUsername());
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.organization", null, LocaleContextHolder.getLocale()), request.getOrganization());
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.phone", null, LocaleContextHolder.getLocale()), request.getPhone());
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.email", null, LocaleContextHolder.getLocale()), request.getEmail());
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.description", null, LocaleContextHolder.getLocale()), request.getDescription());
-            jsonRequest.put(messageSource.getMessage("Table.requests.header.status", null, LocaleContextHolder.getLocale()), request.getStatus().name());
-            jsonArray.put(jsonRequest);
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put(messageSource.getMessage("Table.requests.header.id", null, LocaleContextHolder.getLocale()), request.getId().toString());
+            jsonObject.put(messageSource.getMessage("Table.requests.header.username", null, LocaleContextHolder.getLocale()), request.getUsername());
+            jsonObject.put(messageSource.getMessage("Table.requests.header.organization", null, LocaleContextHolder.getLocale()), request.getOrganization());
+            jsonObject.put(messageSource.getMessage("Table.requests.header.phone", null, LocaleContextHolder.getLocale()), request.getPhone());
+            jsonObject.put(messageSource.getMessage("Table.requests.header.email", null, LocaleContextHolder.getLocale()), request.getEmail());
+            jsonObject.put(messageSource.getMessage("Table.requests.header.description", null, LocaleContextHolder.getLocale()), request.getDescription());
+            jsonObject.put(messageSource.getMessage("Table.requests.header.status", null, LocaleContextHolder.getLocale()), request.getStatus().name());
+            jsonArray.put(jsonObject);
         }
         return jsonArray.toString();
     }
@@ -67,10 +67,10 @@ public class AjaxRequestsController {
                 .filter(catalogItem -> catalogItem.getName().toLowerCase().contains(text.toLowerCase()))
                 .collect(Collectors.toList());
         for (CatalogItem catalogItem : catalogItems) {
-            JSONObject jsonRequest = new JSONObject();
-            jsonRequest.put(messageSource.getMessage("Catalog.search.header.name", null, LocaleContextHolder.getLocale()), catalogItem.getName());
-            jsonRequest.put(messageSource.getMessage("Catalog.search.header.group", null, LocaleContextHolder.getLocale()), catalogItem.getGroupName());
-            jsonArray.put(jsonRequest);
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put(messageSource.getMessage("Catalog.search.header.name", null, LocaleContextHolder.getLocale()), catalogItem.getName());
+            jsonObject.put(messageSource.getMessage("Catalog.search.header.group", null, LocaleContextHolder.getLocale()), catalogItem.getGroupName());
+            jsonArray.put(jsonObject);
         }
         return jsonArray.toString();
     }
