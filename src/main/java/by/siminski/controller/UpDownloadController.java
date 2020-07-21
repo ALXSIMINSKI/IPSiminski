@@ -27,8 +27,8 @@ import java.nio.file.StandardCopyOption;
 @Controller
 public class UpDownloadController {
 
-    private static final String DEFAULT_PRICE_LIST_FILE_NAME = "prices.doc";
-    private static final String DEFAULT_AGREEMENT_FILE_NAME = "agreement.doc";
+    private static final String DEFAULT_CATALOG_FILE_NAME = "catalog.docx";
+    private static final String DEFAULT_AGREEMENT_FILE_NAME = "agreement.docx";
     private static final String DIRECTORY_TO_UP_DOWNLOAD = "/download/";
 
     @Autowired
@@ -37,9 +37,9 @@ public class UpDownloadController {
     @Autowired
     private MessageSource messageSource;
 
-    @PostMapping("/upload/prices")
-    public String uploadPrices(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("upload_prices_status", uploadFile(file, DEFAULT_PRICE_LIST_FILE_NAME));
+    @PostMapping("/upload/catalog")
+    public String uploadCatalog(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("upload_catalog_status", uploadFile(file, DEFAULT_CATALOG_FILE_NAME));
         return "redirect:/settings";
     }
 
@@ -49,8 +49,8 @@ public class UpDownloadController {
         return "redirect:/settings";
     }
 
-    @GetMapping("/download/pl")
-    public ResponseEntity<InputStreamResource> downloadPriceList(@RequestParam(defaultValue = DEFAULT_PRICE_LIST_FILE_NAME) String fileName) {
+    @GetMapping("/download/catalog")
+    public ResponseEntity<InputStreamResource> downloadCatalog(@RequestParam(defaultValue = DEFAULT_CATALOG_FILE_NAME) String fileName) {
         try {
             return buildResponseOnDownload(fileName);
         } catch (IOException e) {

@@ -7,8 +7,6 @@ import by.siminski.services.DocumentParseService;
 import by.siminski.services.OrderRequestService;
 import by.siminski.services.security.SecurityService;
 import by.siminski.validator.OrderRequestValidator;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
@@ -21,14 +19,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.thymeleaf.util.StringUtils;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Controller
 public class NavigationController {
@@ -88,15 +81,15 @@ public class NavigationController {
         return "contacts";
     }
 
-    @GetMapping("/offerings")
-    public String offerings(Model model) {
+    @GetMapping("/catalog")
+    public String catalog(Model model) {
         String username = securityService.findLoggedInUsername();
         model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
         model.addAttribute("userName", username);
 
         Map<String, List<CatalogItem>> catalogItemsMap = catalogItemService.getAllCatalogItemsMap();
         model.addAttribute("catalogItemsMap", catalogItemsMap);
-        return "offerings";
+        return "catalog";
     }
 
     @GetMapping("/make-request")

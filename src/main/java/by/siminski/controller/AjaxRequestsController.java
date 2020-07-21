@@ -5,17 +5,12 @@ import by.siminski.model.request.OrderRequest;
 import by.siminski.services.CatalogItemService;
 import by.siminski.services.DocumentParseService;
 import by.siminski.services.OrderRequestService;
-import by.siminski.services.security.SecurityService;
-import by.siminski.validator.OrderRequestValidator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -73,8 +68,8 @@ public class AjaxRequestsController {
                 .collect(Collectors.toList());
         for (CatalogItem catalogItem : catalogItems) {
             JSONObject jsonRequest = new JSONObject();
-            jsonRequest.put(messageSource.getMessage("Offerings.search.header.name", null, LocaleContextHolder.getLocale()), catalogItem.getName());
-            jsonRequest.put(messageSource.getMessage("Offerings.search.header.group", null, LocaleContextHolder.getLocale()), catalogItem.getGroupName());
+            jsonRequest.put(messageSource.getMessage("Catalog.search.header.name", null, LocaleContextHolder.getLocale()), catalogItem.getName());
+            jsonRequest.put(messageSource.getMessage("Catalog.search.header.group", null, LocaleContextHolder.getLocale()), catalogItem.getGroupName());
             jsonArray.put(jsonRequest);
         }
         return jsonArray.toString();

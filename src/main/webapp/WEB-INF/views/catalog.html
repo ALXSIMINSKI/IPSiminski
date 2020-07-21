@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>[[#{Navigation.offerings}]]</title>
+    <title>[[#{Navigation.catalog}]]</title>
 
     <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/resources/css/common.css}" rel="stylesheet" type="text/css">
@@ -14,7 +14,7 @@
 <body>
 <div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
 <div id="main">
-    <input class="search-input" id="catalog-search" type="text" th:placeholder="#{Offerings.search}"/>
+    <input class="search-input" id="catalog-search" type="text" th:placeholder="#{Catalog.search}"/>
     <table id="catalog-search-table"></table>
     <div th:each="element:${catalogItemsMap}">
         <button type="button" class="collapsible" th:text="${element.key}">Group name</button>
