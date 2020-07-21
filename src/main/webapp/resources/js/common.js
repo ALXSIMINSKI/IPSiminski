@@ -37,6 +37,7 @@ function buildRequestsTable(table, jsonRequests) {
     if(jsonRequests.length !== 0) {
         let thead = table.createTHead();
         let row = thead.insertRow();
+        //it's considered, that every element has similar key pack
         for (let key of Object.keys(jsonRequests[0])) {
             let th = document.createElement("th");
             let headerText = document.createTextNode(key);
@@ -46,11 +47,13 @@ function buildRequestsTable(table, jsonRequests) {
         let tbody = table.createTBody();
         for (let element of jsonRequests) {
             let row = tbody.insertRow();
+            //fill row data
             for (let key of Object.keys(element)) {
                 let cell = row.insertCell();
                 let text = document.createTextNode(element[key]);
                 cell.appendChild(text);
             }
+            //append button 'close request'
             let button = document.createElement("button");
             let cell = row.insertCell();
             button.addEventListener("click", function () {
