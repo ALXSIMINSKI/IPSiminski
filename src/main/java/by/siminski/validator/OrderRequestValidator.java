@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
+import org.thymeleaf.util.StringUtils;
 
 @Component
 public class OrderRequestValidator implements Validator {
@@ -20,23 +21,21 @@ public class OrderRequestValidator implements Validator {
         OrderRequest orderRequest = (OrderRequest) o;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "Required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "organization", "Required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "Required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "Required");
         if (orderRequest.getUsername().length() < 2 || orderRequest.getUsername().length() > 32) {
             errors.rejectValue("username", "Size.requestForm.username");
         }
-        if (orderRequest.getOrganization().length() < 2 || orderRequest.getOrganization().length() > 64) {
+        if (!StringUtils.isEmpty(orderRequest.getOrganization()) && orderRequest.getOrganization().length() < 2 || orderRequest.getOrganization().length() > 64) {
             errors.rejectValue("organization", "Size.requestForm.organization");
         }
         if (orderRequest.getPhone().length() < 7 || orderRequest.getPhone().length() > 20) {
             errors.rejectValue("phone", "Size.requestForm.phone");
         }
-        if (orderRequest.getDescription().length() < 10 || orderRequest.getDescription().length() > 500) {
+        if (!StringUtils.isEmpty(orderRequest.getDescription()) && orderRequest.getDescription().length() < 10 || orderRequest.getDescription().length() > 500) {
             errors.rejectValue("description", "Size.requestForm.description");
         }
-//        if (orderRequest.getEmail()) {
-//            errors.rejectValue("description", "Size.requestForm.description");
-//        }
+        if (!StringUtils.isEmpty(orderRequest.getOrganization()) && orderRequest.getEmail().length() < 6) {
+            errors.rejectValue("description", "Size.requestForm.description");
+        }
     }
 }

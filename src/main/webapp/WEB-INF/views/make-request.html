@@ -17,28 +17,52 @@
     <div th:if="${#strings.isEmpty(result)}" class="text-center pt-100">
         <form method="POST" th:object="${requestForm}" th:action="@{/make-request}">
             <h1>[[#{Make.request.header}]]</h1>
+            <table class="requests-table">
+                <tr>
+                    <td th:text="#{Make.request.name}+'*'"></td>
+                </tr>
+                <tr>
+                    <td><input class="requests-input w-30p mb-2 " type="text" th:field="*{username}" th:placeholder="#{Request.username}" th:required="required" autofocus="true"/></td>
+                </tr>
+                <tr>
+                    <td><span class="error-label mb-5" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error with data entered</span></td>
+                </tr>
+                <tr>
+                    <td th:text="#{Make.request.organization}"></td>
+                </tr>
+                <tr>
+                    <td><input class="requests-input w-30p mb-2" type="text" th:field="*{organization}" th:placeholder="#{Request.organization}"/></td>
+                </tr>
+                <tr>
+                    <td><span class="error-label mb-5" th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}">Error with data entered</span></td>
+                </tr>
+                <tr>
+                    <td th:text="#{Make.request.phone}+'*'"></td>
+                </tr>
+                <tr>
+                    <td><input class="requests-input w-30p mb-2" type="text" th:field="*{phone}" th:required="required" th:placeholder="#{Request.phone}"/></td>
+                </tr>
+                <tr>
+                    <td><span class="error-label mb-5" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Error with data entered</span></td>
+                </tr>
+                <tr>
+                    <td th:text="#{Make.request.email}"></td>
+                </tr>
+                <tr>
+                    <td><input class="requests-input w-30p mb-2" type="text" th:field="*{email}" th:placeholder="#{Request.email}"/></td>
+                </tr>
+                <tr>
+                    <td><span class="error-label mb-5" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error with data entered</span></td>
+                </tr>
+            </table>
+            <span class="description-span" th:text="#{Make.request.description}"></span>
             <div>
-                <input class="input-group-text w-300 mb-2" type="text" th:field="*{username}" th:placeholder="#{Request.username}" th:required="required" autofocus="true"/>
+                <textarea rows="10" cols="100" class="requests-text-area" th:field="*{description}" th:placeholder="#{Request.description}"></textarea>
             </div>
-            <span class="error-label mb-5" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error with data entered</span>
             <div>
-                <input class="input-group-text w-300 mb-2" type="text" th:field="*{organization}" th:required="required" th:placeholder="#{Request.organization}"/>
+                <span class="error-label mb-5" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error with data entered</span>
             </div>
-            <span class="error-label mb-5" th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}">Error with data entered</span>
-            <div>
-                <input class="input-group-text w-300 mb-2" type="text" th:field="*{phone}" th:required="required" th:placeholder="#{Request.phone}"/>
-            </div>
-            <span class="error-label mb-5" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Error with data entered</span>
-            <div>
-                <input class="input-group-text w-300 mb-2" type="text" th:field="*{email}" th:placeholder="#{Request.email}"/>
-            </div>
-            <span class="error-label mb-5" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error with data entered</span>
-            <div>
-                <textarea rows="10" cols="100" class="input-group-text" th:field="*{description}" th:required="required" th:placeholder="#{Request.description}"></textarea>
-            </div>
-            <span class="error-label mb-5" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error with data entered</span>
-            <br>
-            <button class="btn btn-success mb-5 w-300" type="submit" value="Submit">[[#{Size.requestForm.submit}]]</button>
+            <button class="btn btn-dark mb-5 w-300" type="submit" value="Submit">[[#{Size.requestForm.submit}]]</button>
         </form>
     </div>
     <div th:unless="${#strings.isEmpty(result)}" class="text-center pt-200">
