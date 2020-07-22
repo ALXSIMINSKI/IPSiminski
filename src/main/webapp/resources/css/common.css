@@ -266,7 +266,8 @@ footer > a {
     color: white;
     cursor: pointer;
     padding: 18px;
-    width: 100%;
+    width: 99%;
+    margin-left: 0.5%;
     border: none;
     text-align: left;
     outline: none;
@@ -277,9 +278,9 @@ footer > a {
 }
 
 .search-input {
-    margin-bottom: 1%;
     margin-top: 1%;
-    width: 100%;
+    margin-left: 0.5%;
+    width: 99%;
     height: 64px;
     font-size: 32px;
     background-image: url("/resources/img/search-icon.png");
@@ -337,7 +338,8 @@ footer > a {
 #catalog-search-table {
     background: #8cb891;
     font-family: "Arial Black", Gadget, sans-serif;
-    width: 100%;
+    width: 99%;
+    margin-left: 0.5%;
     margin-bottom: 1%;
 }
 
