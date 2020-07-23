@@ -1,15 +1,17 @@
 package by.siminski.validator;
 
 import by.siminski.model.request.OrderRequest;
+import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.thymeleaf.util.StringUtils;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
 public class OrderRequestValidator implements Validator {
-
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -34,8 +36,11 @@ public class OrderRequestValidator implements Validator {
         if (!StringUtils.isEmpty(orderRequest.getDescription()) && orderRequest.getDescription().length() < 10 || orderRequest.getDescription().length() > 500) {
             errors.rejectValue("description", "Size.requestForm.description");
         }
-        if (!StringUtils.isEmpty(orderRequest.getOrganization()) && orderRequest.getEmail().length() < 6) {
-            errors.rejectValue("description", "Size.requestForm.description");
+        if (!StringUtils.isEmpty(orderRequest.getEmail()) && orderRequest.getEmail().length() < 6) {
+            errors.rejectValue("email", "Size.requestForm.email");
+        }
+        if (!StringUtils.isEmpty(orderRequest.getEmail()) && !EmailValidator.getInstance().isValid(orderRequest.getEmail())) {
+            errors.rejectValue("email", "Size.requestForm.email.match");
         }
     }
 }
