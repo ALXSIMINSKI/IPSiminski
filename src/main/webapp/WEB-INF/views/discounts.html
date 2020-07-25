@@ -13,9 +13,56 @@
 </head>
 <body>
 <div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
-<div id="main" class="text-center">
-    <h1 th:text="#{Discounts.header.discounts}">DISCOUNTS</h1>
-
+<div id="main">
+    <div class="text-center pt-100">
+        <h1 th:text="#{Discounts.header.discounts}">DISCOUNTS</h1>
+        <table class="discounts-table">
+            <thead>
+            <tr>
+                <th th:text="#{Discounts.header.number}"></th>
+                <th th:text="#{Discounts.header.discount}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>5-9 [[#{Discounts.char.item}]]</td>
+                <td>5%</td>
+            </tr>
+            <tr>
+                <td>10-14 [[#{Discounts.char.item}]]</td>
+                <td>10%</td>
+            </tr>
+            <tr>
+                <td>15-19 [[#{Discounts.char.item}]]</td>
+                <td>15%</td>
+            </tr>
+            <tr>
+                <td>20-24 [[#{Discounts.char.item}]]</td>
+                <td>20%</td>
+            </tr>
+            <tr>
+                <td>25-29 [[#{Discounts.char.item}]]</td>
+                <td>25%</td>
+            </tr>
+            <tr>
+                <td>30-34 [[#{Discounts.char.item}]]</td>
+                <td>30%</td>
+            </tr>
+            <tr>
+                <td>35-39 [[#{Discounts.char.item}]]</td>
+                <td>35%</td>
+            </tr>
+            <tr>
+                <td>40-49 [[#{Discounts.char.item}]]</td>
+                <td>45%</td>
+            </tr>
+            <tr>
+                <td>50 [[#{Discounts.char.item}]]</td>
+                <td>50%</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <button onclick="topFunction()" id="btnUp"></button>
 </div>
 <div th:insert="~{fragments::footer}"></div>
