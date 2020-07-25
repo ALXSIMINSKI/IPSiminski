@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>[[#{Contacts.discounts}]]</title>
+
+    <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/resources/css/common.css}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" th:src="@{/resources/js/common.js}"></script>
+</head>
+<body>
+<div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
+<div id="main" class="text-center">
+    <h1 th:text="#{Discounts.header.discounts}">DISCOUNTS</h1>
+
+    <button onclick="topFunction()" id="btnUp"></button>
+</div>
+<div th:insert="~{fragments::footer}"></div>
+</body>
+</html>

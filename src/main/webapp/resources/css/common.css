@@ -62,10 +62,6 @@ footer > a {
     font-family: Impact, fantasy, sans-serif;
 }
 
-.navbar-link-custom:hover {
-    background-color: #4cae4c;
-}
-
 .navbar-brand {
     border-radius: 5px;
 }
@@ -120,6 +116,21 @@ footer > a {
 
 .navbar-link-custom {
     border-radius: 5px;
+    margin-left: 60px;
+}
+
+.navbar-link-custom:hover {
+    background-color: #4cae4c;
+}
+
+.nav-admin-settings {
+    color: #ffef6b;
+    border-radius: 5px;
+    margin-left: 60px;
+}
+
+.nav-admin-settings:hover {
+    color: #ffef6b;
 }
 
 .error-label {
@@ -141,15 +152,6 @@ footer > a {
 
 .w-30p {
     width: 30%;
-}
-
-.nav-admin-settings {
-    color: #ffef6b;
-    border-radius: 5px;
-}
-
-.nav-admin-settings:hover {
-    color: #ffef6b;
 }
 
 .start-page-header {

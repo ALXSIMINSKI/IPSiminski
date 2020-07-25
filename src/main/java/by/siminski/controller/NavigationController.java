@@ -64,6 +64,14 @@ public class NavigationController {
         return "settings";
     }
 
+    @GetMapping("/discounts")
+    public String discounts(Model model) {
+        String username = securityService.findLoggedInUsername();
+        model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
+        model.addAttribute("userName", username);
+        return "discounts";
+    }
+
     @GetMapping("/requests")
     public String requests(Model model) {
         String username = securityService.findLoggedInUsername();
