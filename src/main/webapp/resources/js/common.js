@@ -57,7 +57,7 @@ function buildRequestsTable(table, jsonRequests) {
             let button = document.createElement("button");
             let cell = row.insertCell();
             button.addEventListener("click", function () {
-                reloadRequestsTable(element["ID"]);
+                reloadRequestsTable(element[strings['idTitle']]);
             });
             button.setAttribute('class', 'btn-req-cancel');
             cell.setAttribute('class', 'close-request-column');

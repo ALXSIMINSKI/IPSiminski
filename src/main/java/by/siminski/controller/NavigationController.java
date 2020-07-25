@@ -70,6 +70,7 @@ public class NavigationController {
         model.addAttribute("allRequests", orderRequestService.getAllRequests());
         model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
         model.addAttribute("userName", username);
+        model.addAttribute("idTitle", messageSource.getMessage("Table.requests.header.id", null, LocaleContextHolder.getLocale()));
         return "requests";
     }
 
