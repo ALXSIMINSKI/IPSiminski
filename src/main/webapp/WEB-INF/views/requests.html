@@ -12,7 +12,7 @@
     <script type="text/javascript" th:src="@{/resources/js/common.js}"></script>
     <script type="text/javascript">
         let strings = [];
-        strings['idTitle'] =  "[[${idTitle}]]";
+        strings['headerList'] = '[[${headerList}]]';
     </script>
 </head>
 <body>
@@ -22,24 +22,24 @@
         <table id="requestsTable">
             <thead>
             <tr>
-                <th th:text="#{Table.requests.header.organization}">ORGANIZATION</th>
-                <th th:text="#{Table.requests.header.status}">STATUS</th>
-                <th th:text="#{Table.requests.header.description}">DESCRIPTION</th>
-                <th th:text="#{Table.requests.header.phone}">PHONE</th>
-                <th th:text="#{Table.requests.header.username}">USERNAME</th>
                 <th th:text="#{Table.requests.header.id}">ID</th>
+                <th th:text="#{Table.requests.header.username}">USERNAME</th>
+                <th th:text="#{Table.requests.header.organization}">ORGANIZATION</th>
+                <th th:text="#{Table.requests.header.phone}">PHONE</th>
                 <th th:text="#{Table.requests.header.email}">EMAIL</th>
+                <th th:text="#{Table.requests.header.description}">DESCRIPTION</th>
+                <th th:text="#{Table.requests.header.status}">STATUS</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="requestItem:${allRequests}">
-                <td th:text="${requestItem.organization}">ORGANIZATION</td>
-                <td th:text="${requestItem.status}">STATUS</td>
-                <td th:text="${requestItem.description}">DESCRIPTION</td>
-                <td th:text="${requestItem.phone}">PHONE</td>
-                <td th:text="${requestItem.username}">USERNAME</td>
                 <td th:text="${requestItem.id}">ID</td>
+                <td th:text="${requestItem.username}">USERNAME</td>
+                <td th:text="${requestItem.organization}">ORGANIZATION</td>
+                <td th:text="${requestItem.phone}">PHONE</td>
                 <td th:text="${requestItem.email}">EMAIL</td>
+                <td th:text="${requestItem.description}">DESCRIPTION</td>
+                <td th:text="${requestItem.status}">STATUS</td>
                 <td class="close-request-column">
                     <button th:onclick="'reloadRequestsTable('+${requestItem.id}+');'" class="btn-req-cancel"></button>
                 </td>

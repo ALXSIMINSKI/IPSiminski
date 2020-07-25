@@ -34,11 +34,11 @@ function reloadRequestsTable(request_id) {
 }
 
 function buildRequestsTable(table, jsonRequests) {
+    let headers = strings['headerList'].split(",");
     if(jsonRequests.length !== 0) {
         let thead = table.createTHead();
         let row = thead.insertRow();
-        //it's considered, that every element has similar key pack
-        for (let key of Object.keys(jsonRequests[0])) {
+        for (let key of headers) {
             let th = document.createElement("th");
             let headerText = document.createTextNode(key);
             th.appendChild(headerText);
@@ -48,7 +48,7 @@ function buildRequestsTable(table, jsonRequests) {
         for (let element of jsonRequests) {
             let row = tbody.insertRow();
             //fill row data
-            for (let key of Object.keys(element)) {
+            for (let key of headers) {
                 let cell = row.insertCell();
                 let text = document.createTextNode(element[key]);
                 cell.appendChild(text);
@@ -57,7 +57,7 @@ function buildRequestsTable(table, jsonRequests) {
             let button = document.createElement("button");
             let cell = row.insertCell();
             button.addEventListener("click", function () {
-                reloadRequestsTable(element[strings['idTitle']]);
+                reloadRequestsTable(element[headers[0]]);
             });
             button.setAttribute('class', 'btn-req-cancel');
             cell.setAttribute('class', 'close-request-column');

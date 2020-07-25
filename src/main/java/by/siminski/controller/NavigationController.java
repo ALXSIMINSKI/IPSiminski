@@ -70,7 +70,14 @@ public class NavigationController {
         model.addAttribute("allRequests", orderRequestService.getAllRequests());
         model.addAttribute("isAnon", SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
         model.addAttribute("userName", username);
-        model.addAttribute("idTitle", messageSource.getMessage("Table.requests.header.id", null, LocaleContextHolder.getLocale()));
+        String headers = messageSource.getMessage("Table.requests.header.id", null, LocaleContextHolder.getLocale()) + "," +
+                         messageSource.getMessage("Table.requests.header.username", null, LocaleContextHolder.getLocale()) + "," +
+                         messageSource.getMessage("Table.requests.header.organization", null, LocaleContextHolder.getLocale()) + "," +
+                         messageSource.getMessage("Table.requests.header.phone", null, LocaleContextHolder.getLocale()) + "," +
+                         messageSource.getMessage("Table.requests.header.email", null, LocaleContextHolder.getLocale()) + "," +
+                         messageSource.getMessage("Table.requests.header.description", null, LocaleContextHolder.getLocale()) + "," +
+                         messageSource.getMessage("Table.requests.header.status", null, LocaleContextHolder.getLocale());
+        model.addAttribute("headerList", headers);
         return "requests";
     }
 
