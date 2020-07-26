@@ -17,13 +17,37 @@
 <div th:insert="~{fragments::navbar(${isAnon},${userName})}"></div>
 <div id="main">
     <div class="welcome-header">
-        <span th:text="#{Contacts.general.info}"></span>
+        <span th:text="#{General.info}"></span>
     </div>
     <h1 class="header-subinfo">
-        <span th:text="#{Contacts.general.subinfo}"></span>
+        <span th:text="#{General.subinfo}"></span>
+    </h1>
+    <h1 class="header-production">
+        <span th:text="#{General.production}"></span>
     </h1>
     <div th:insert="~{fragments::slideshow}"></div>
-
+    <h2 class="mt-5 ml-10p" th:text="#{Header.advantages}"></h2>
+    <table class="advantages-table">
+        <tr>
+            <td><img src="/resources/img/delivery.png"></td>
+            <td th:text="#{Advantages.delivery}"></td>
+        </tr>
+        <tr>
+            <td><img src="/resources/img/price.png"></td>
+            <td th:text="#{Advantages.price}"></td>
+        </tr>
+        <tr>
+            <td><img src="/resources/img/discount.png"></td>
+            <td th:text="#{Advantages.discounts}"></td>
+        </tr>
+        <tr>
+            <td><img src="/resources/img/quality.png"></td>
+            <td th:text="#{Advantages.quality}"></td>
+        <tr>
+            <td><img src="/resources/img/fast.png"></td>
+            <td th:text="#{Advantages.speed}"></td>
+        </tr>
+    </table>
     <button onclick="topFunction()" id="btnUp"></button>
 </div>
 <div th:insert="~{fragments::footer}"></div>

@@ -1,7 +1,6 @@
 *{
     margin:0;
     padding:0;
-    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -10,6 +9,7 @@ body {
     position:relative;
     z-index:0;
     color: #000000;
+    font-family: Trebuchet MS, sans-serif;
 }
 
 #main {
@@ -31,6 +31,7 @@ footer {
     background-image: url("/resources/img/footer-bg.png");
     display: grid;
     padding: 50px;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 }
 
 footer > img {
@@ -48,7 +49,7 @@ footer > img {
 
 .footer-links-right {
     position: fixed;
-    bottom: 60px;
+    bottom: 100px;
     right: 10%;
 }
 
@@ -57,7 +58,7 @@ footer > img {
 }
 
 .navbar {
-    font-family: 'Lobster', Georgia, Times, serif;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
     border-radius: unset;
     z-index:1;
     margin-bottom: 0;
@@ -319,16 +320,15 @@ footer > img {
     padding-left: 10%;
     margin-bottom: 1%;
     font-size: x-large;
-    /*font-family: Impact, Charcoal, sans-serif;*/
 }
 
 .contacts-main {
-    /*font-family: American Typewriter, serif;*/
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
     font-size: 4vw;
 }
 
 .welcome-header {
-    /*font-family: American Typewriter, serif;*/
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
     font-size: 4vw;
     text-align: center;
 }
@@ -337,14 +337,20 @@ footer > img {
     margin-right: 2%;
 }
 
+.header-production {
+    margin-top: 0;
+    text-align: center;
+    font-family: Arial Narrow, sans-serif!important;
+}
+
 .header-subinfo {
     margin-top: 0;
     text-align: center;
+    font-family: Arial Narrow, sans-serif!important;
 }
 
 #catalog-search-table {
     background: rgba(140, 184, 145, 0.51);
-    /*font-family: "Arial Black", Gadget, sans-serif;*/
     width: 99%;
     margin-left: 0.5%;
     margin-bottom: 1%;
@@ -383,14 +389,12 @@ footer > img {
 }
 
 .requests-table {
-    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     font-size: large;
     width: 100%;
     text-align: center;
 }
 
 .description-span {
-    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     font-size: large;
 }
 
@@ -455,7 +459,6 @@ th {
     margin: auto;
     margin-top: 30px;
     width: 50%;
-    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     font-size: large;
 }
 
@@ -471,6 +474,15 @@ th {
     background-color: rgba(140, 184, 145, 0.45);
 }
 
+.advantages-table {
+    font-size: large;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.ml-10p {
+    margin-left: 10%;
+}
 /*#loading {*/
     /*display: block;*/
     /*position: absolute;*/
