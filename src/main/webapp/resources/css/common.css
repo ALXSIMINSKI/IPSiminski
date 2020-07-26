@@ -17,7 +17,7 @@ body {
     position:relative;
     z-index:1;
     background-color: #fff;
-    box-shadow: 0 20px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.4);
     background-image: url("/resources/img/background.png");
     background-repeat: repeat;
 }
@@ -28,7 +28,7 @@ footer {
     left: 0;
     height: 250px;
     width: 100%;
-    background-image: url("/resources/img/bg.png");
+    background-image: url("/resources/img/footer-bg.png");
     display: grid;
     padding: 50px;
 }
