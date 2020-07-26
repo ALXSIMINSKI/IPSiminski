@@ -33,13 +33,6 @@ footer {
     padding: 50px;
 }
 
-footer > span {
-    font-size: x-large;
-    position:fixed;
-    bottom: 90px;
-    left: 70%;
-}
-
 footer > img {
     position: fixed;
     bottom: 60px;
@@ -47,10 +40,16 @@ footer > img {
     margin-left: -125px;
 }
 
-footer > a {
+.footer-links-left {
     position: fixed;
-    bottom: 120px;
-    left: 1%;
+    bottom: 60px;
+    left: 10%;
+}
+
+.footer-links-right {
+    position: fixed;
+    bottom: 60px;
+    right: 10%;
 }
 
 .username {

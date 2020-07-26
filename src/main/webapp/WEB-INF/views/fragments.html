@@ -33,8 +33,21 @@
         </nav>
         <!--FOOTER-->
         <footer th:fragment="footer">
-            <a href="https://icons8.ru">Icons8</a>
+            <div class="footer-links-left">
+                <ul>
+                    <li><a th:href="@{/welcome}">[[#{Main.title}]]</a></li>
+                    <li><a th:href="@{/catalog}">[[#{Catalog.title}]]</a></li>
+                    <li><a th:href="@{/make-request}">[[#{MakeRequest.title}]]</a></li>
+                    <li><a th:href="@{/discounts}">[[#{Discounts.title}]]</a></li>
+                    <li><a th:href="@{/contacts}">[[#{Contacts.title}]]</a></li>
+                </ul>
+            </div>
             <img class="logo-footer" th:src="@{/resources/img/logo.png}" alt="">
+            <div class="footer-links-right">
+                <a href="https://icons8.ru">[[#{Footer.icons8}]]</a>
+                <br>
+                <span>&copy;2020</span>
+            </div>
         </footer>
         <!--SLIDESHOW-->
         <div th:fragment="slideshow" class="slideshow-container">
