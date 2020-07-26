@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <body>
         <!--NAVBAR-->
-        <nav th:fragment="navbar(isAnon,userName)" class="navbar">
+        <nav th:fragment="navbar(isAnon,userName)" class="navbar bg-dark">
             <div>
             <a class="navbar-link-custom" th:href="@{/welcome}">[[#{Navigation.main}]]</a>
             <a class="navbar-link-custom" th:href="@{/catalog}">[[#{Navigation.catalog}]]</a>
@@ -22,7 +22,7 @@
             </form>
             </div>
             <div>
-                <span th:unless="${isAnon}" th:text="${userName}">Hello</span>
+                <span class="username" th:unless="${isAnon}" th:text="${userName}">Hello</span>
                 <form th:if="${isAnon}" class="navbar-form" th:action="@{/login}" method="GET">
                     <button class="btn btn-login" type="submit">[[#{Nav.button.login}]]</button>
                 </form>

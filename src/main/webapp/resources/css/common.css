@@ -1,9 +1,10 @@
 *{
     margin:0;
     padding:0;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 }
 
-body{
+body {
     /* Create a page-wide stacking context
     (so that negative margins work as you expect) */
     position:relative;
@@ -16,7 +17,7 @@ body{
     position:relative;
     z-index:1;
     background-color: #fff;
-    box-shadow: 0 10px 5px rgba(0,0,0,0.25);
+    box-shadow: 0 20px 10px rgba(0, 0, 0, 0.4);
     background-image: url("/resources/img/background.png");
     background-repeat: repeat;
 }
@@ -27,15 +28,13 @@ footer {
     left: 0;
     height: 250px;
     width: 100%;
-    background-image: url("/resources/img/footer-bg.png");
-    background-repeat: repeat;
+    background-image: url("/resources/img/bg.png");
     display: grid;
     padding: 50px;
 }
 
 footer > span {
     font-size: x-large;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     position:fixed;
     bottom: 90px;
     left: 70%;
@@ -54,13 +53,15 @@ footer > a {
     left: 1%;
 }
 
+.username {
+    color: rgba(255, 247, 0, 0.98);
+}
+
 .navbar {
+    font-family: 'Lobster', Georgia, Times, serif;
     border-radius: unset;
     z-index:1;
-    background-image: url("/resources/img/footer-bg.png");
-    background-repeat: repeat;
     margin-bottom: 0;
-    font-family: Impact, fantasy, sans-serif;
 }
 
 .navbar-brand {
@@ -84,44 +85,45 @@ footer > a {
 
 .btn-download {
     background-color: transparent;
-    border-color: #4cae4c;
-    color: #4cae4c;
+    border-color: rgba(169, 222, 255, 0.98);
+    color: rgba(169, 222, 255, 0.98);
 }
 
 .btn-download:hover {
-    color: #4cae4c;
-    box-shadow: 0 0 5px #4cae4c;
+    color: rgba(169, 222, 255, 0.98);
+    box-shadow: 0 0 5px rgba(169, 222, 255, 0.98);
 }
 
 .btn-login {
     background-color: transparent;
-    border-color: #4cae4c;
-    color: #4cae4c;
+    border-color: rgba(169, 222, 255, 0.98);
+    color: rgba(169, 222, 255, 0.98);
 }
 
 .btn-logout {
     background-color: transparent;
-    border-color: #4cae4c;
-    color: #4cae4c;
+    border-color: rgba(169, 222, 255, 0.98);
+    color: rgba(169, 222, 255, 0.98);
 }
 
 .btn-login:hover {
-    color: #4cae4c;
-    box-shadow: 0 0 5px #4cae4c;
+    color: rgba(169, 222, 255, 0.98);
+    box-shadow: 0 0 5px rgba(169, 222, 255, 0.98);
 }
 
 .btn-logout:hover {
-    color: #4cae4c;
-    box-shadow: 0 0 5px #4cae4c;
+    color: rgba(169, 222, 255, 0.98);
+    box-shadow: 0 0 5px rgba(169, 222, 255, 0.98);
 }
 
 .navbar-link-custom {
     border-radius: 5px;
     margin-left: 60px;
+    color: white;
 }
 
 .navbar-link-custom:hover {
-    background-color: #4cae4c;
+    color: rgba(169, 222, 255, 0.98);
 }
 
 .nav-admin-settings {
@@ -318,16 +320,16 @@ footer > a {
     padding-left: 10%;
     margin-bottom: 1%;
     font-size: x-large;
-    font-family: Impact, Charcoal, sans-serif;
+    /*font-family: Impact, Charcoal, sans-serif;*/
 }
 
 .contacts-main {
-    font-family: American Typewriter, serif;
+    /*font-family: American Typewriter, serif;*/
     font-size: 4vw;
 }
 
 .welcome-header {
-    font-family: American Typewriter, serif;
+    /*font-family: American Typewriter, serif;*/
     font-size: 4vw;
     text-align: center;
 }
@@ -343,7 +345,7 @@ footer > a {
 
 #catalog-search-table {
     background: rgba(140, 184, 145, 0.51);
-    font-family: "Arial Black", Gadget, sans-serif;
+    /*font-family: "Arial Black", Gadget, sans-serif;*/
     width: 99%;
     margin-left: 0.5%;
     margin-bottom: 1%;
@@ -366,7 +368,7 @@ footer > a {
 }
 
 .content, .collapsible {
-    font-family: "Arial Black", Gadget, sans-serif;
+    /*font-family: "Arial Black", Gadget, sans-serif;*/
 }
 
 .requests-input {
@@ -375,21 +377,21 @@ footer > a {
 }
 
 .requests-text-area {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     font-size: large;
     border: 2px solid rgb(0, 0, 0);
     background-color: transparent;
 }
 
 .requests-table {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     font-size: large;
     width: 100%;
     text-align: center;
 }
 
 .description-span {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     font-size: large;
 }
 
@@ -454,7 +456,7 @@ th {
     margin: auto;
     margin-top: 30px;
     width: 50%;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     font-size: large;
 }
 
