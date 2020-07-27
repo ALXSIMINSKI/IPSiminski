@@ -20,6 +20,7 @@ body {
     box-shadow: 0 10px 5px rgba(0, 0, 0, 0.4);
     background-image: url("/resources/img/background.png");
     background-repeat: repeat;
+    padding-bottom: 50px;
 }
 
 footer {
@@ -482,8 +483,26 @@ th {
 
 .prices-table {
     font-size: large;
-    width: 80%;
+    width: 50%;
     margin-left: 10%;
+}
+
+.prices-table tr td {
+    border: 1px solid black;
+}
+
+.prices-table tr th {
+    text-align: left;
+}
+
+.prices-header {
+    display: inline;
+    margin-left: 0;
+}
+
+.prices-full-header {
+    margin-left: 10%;
+    width: 50%;
 }
 
 .ml-10p {
