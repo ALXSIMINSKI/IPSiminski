@@ -41,11 +41,51 @@
             <td th:text="#{Advantages.discounts}"></td>
         </tr>
         <tr>
+            <td><img src="/resources/img/noVAT.png"></td>
+            <td th:text="#{Advantages.tap}"></td>
+        </tr>
+        <tr>
             <td><img src="/resources/img/quality.png"></td>
             <td th:text="#{Advantages.quality}"></td>
         <tr>
             <td><img src="/resources/img/fast.png"></td>
             <td th:text="#{Advantages.speed}"></td>
+        </tr>
+    </table>
+    <h2 class="mt-5 ml-10p" th:text="#{Header.prices}"></h2>
+    <table class="prices-table">
+        <tr>
+            <th th:text="#{Price.header.forms}"></th>
+        </tr>
+        <tr>
+            <td th:text="#{Forms.first}"></td>
+            <td>0,0.8 [[#{Currency.by}]]</td>
+        </tr>
+        <tr>
+            <td th:text="#{Forms.second}"></td>
+            <td>0.12 [[#{Currency.by}]]</td>
+        </tr>
+        <tr>
+            <td th:text="#{Forms.third}"></td>
+            <td>0.4 [[#{Currency.by}]]</td>
+        </tr>
+        <tr>
+            <th th:text="#{Price.header.journals}"></th>
+        <tr>
+            <td th:text="#{Journals.first}"></td>
+            <td>5.0 [[#{Currency.by}]]</td>
+        </tr>
+        <tr>
+            <td th:text="#{Journals.second}"></td>
+            <td>6.0 [[#{Currency.by}]]</td>
+        </tr>
+        <tr>
+            <td th:text="#{Journals.third}"></td>
+            <td>7.0 [[#{Currency.by}]]</td>
+        </tr>
+        <tr>
+            <td th:text="#{Journals.fourth}"></td>
+            <td>8.0 [[#{Currency.by}]]</td>
         </tr>
     </table>
     <button onclick="topFunction()" id="btnUp"></button>
