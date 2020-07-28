@@ -133,7 +133,7 @@ function showSlides() {
         slideIndex = slides.length - 1;
     }
     if(slides[slideIndex] != null) {
-        slides[slideIndex].style.display = "inline";
+        slides[slideIndex].style.display = "block";
     }
     slideIndex++;
     slideTimeout = setTimeout(showSlides, 5000);
