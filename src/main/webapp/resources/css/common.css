@@ -243,6 +243,7 @@ footer > img {
 
 .slide-img {
     object-fit: cover;
+    -o-object-fit: cover;
     display: block;
     height: 100%;
     width: 100%;
