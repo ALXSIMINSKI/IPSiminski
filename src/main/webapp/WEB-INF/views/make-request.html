@@ -59,7 +59,7 @@
             </table>
             <span class="description-span" th:text="#{Make.request.description}"></span>
             <div>
-                <textarea rows="10" cols="100" class="requests-text-area" th:field="*{description}" th:placeholder="#{Request.description}"></textarea>
+                <textarea rows="10" class="requests-text-area" th:field="*{description}" th:placeholder="#{Request.description}"></textarea>
             </div>
             <div>
                 <span class="error-label mb-5" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error with data entered</span>
