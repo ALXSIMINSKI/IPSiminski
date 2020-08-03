@@ -58,6 +58,10 @@ footer > img {
     color: rgba(255, 247, 0, 0.98);
 }
 
+.error-image {
+    margin-top: 10%;
+}
+
 .navbar {
     font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
     border-radius: unset;

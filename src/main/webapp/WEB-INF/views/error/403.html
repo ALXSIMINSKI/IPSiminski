@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>[[#{Catalog.title}]]</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:bold' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+    <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/resources/css/common.css}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" th:src="@{/resources/js/common.js}"></script>
+</head>
+<body>
+<div id="main" class="text-center">
+    <img class="error-image" th:src="@{/resources/img/403.png}">
+    <button onclick="topFunction()" id="btnUp"></button>
+</div>
+<div th:insert="~{fragments::footer}"></div>
+</body>
+</html>
