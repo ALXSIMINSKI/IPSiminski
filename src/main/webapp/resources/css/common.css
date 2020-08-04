@@ -491,18 +491,19 @@ th {
 }
 
 .advantages-table tr td {
-    font-family: 'Josefin Sans', Helvetica, Arial, sans-serif;
+    font-size: x-large;
+    font-family: Arial Narrow, sans-serif;
 }
 
 .prices-table {
-    font-size: large;
+    font-size: x-large;
     width: 50%;
     margin-left: 10%;
 }
 
 .prices-table tr td {
     border: 3px solid rgba(0, 0, 0, 0.51);
-    font-family: 'Josefin Sans', Helvetica, Arial, sans-serif;
+    font-family: Arial Narrow, sans-serif;
 }
 
 .prices-table tr th {
@@ -514,6 +515,7 @@ th {
 }
 
 .prices-header {
+    font-size: xx-large;
     display: inline;
     margin-left: 0;
 }
