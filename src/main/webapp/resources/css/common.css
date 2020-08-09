@@ -99,6 +99,19 @@ footer > img {
     box-shadow: 0 0 5px rgba(169, 222, 255, 0.98);
 }
 
+.btn-download-not-active {
+    background-color: transparent;
+    border-color: rgba(159, 159, 159, 0.98);
+    color: rgba(159, 159, 159, 0.98);
+}
+
+.btn-download-not-active:hover {
+    background-color: transparent;
+    box-shadow: unset;
+    border-color: rgba(159, 159, 159, 0.98);
+    color: rgba(159, 159, 159, 0.98);
+}
+
 .btn-login {
     background-color: transparent;
     border-color: rgba(169, 222, 255, 0.98);

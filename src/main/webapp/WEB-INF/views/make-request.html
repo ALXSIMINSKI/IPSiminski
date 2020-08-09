@@ -36,7 +36,7 @@
                     <td><input class="requests-input w-30p mb-2" type="text" th:field="*{organization}" th:placeholder="#{Request.organization}"/></td>
                 </tr>
                 <tr>
-                    <td><span class="error-label mb-5" th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}">Error with data entered</span></td>
+                    <td><span class="error-label mb-5" th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}" th:required="required">Error with data entered</span></td>
                 </tr>
                 <tr>
                     <td th:text="#{Make.request.phone}+'*'"></td>
