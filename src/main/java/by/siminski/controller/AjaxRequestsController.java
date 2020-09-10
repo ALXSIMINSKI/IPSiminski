@@ -61,11 +61,11 @@ public class AjaxRequestsController {
         if(StringUtils.isEmpty(text)) {
             return new JSONArray().toString();
         }
-        JSONArray jsonArray = new JSONArray();
         List<CatalogItem> catalogItems = catalogItemService.getAllCatalogItemsMap().values().stream()
                 .flatMap(Collection::stream)
                 .filter(catalogItem -> catalogItem.getName().toLowerCase().contains(text.toLowerCase()))
                 .collect(Collectors.toList());
+        JSONArray jsonArray = new JSONArray();
         for (CatalogItem catalogItem : catalogItems) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put(messageSource.getMessage("Catalog.search.header.name", null, LocaleContextHolder.getLocale()), catalogItem.getName());
